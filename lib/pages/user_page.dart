@@ -78,7 +78,7 @@ class _UserPageState extends State<UserPage> {
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 5,
-                    child: Container(
+                    child: SizedBox(
                       height: 160,
                       width: 220,
                       child: Padding(
@@ -151,8 +151,9 @@ class _UserPageState extends State<UserPage> {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.receipt, size: 20, color: Colors.white),
-                        SizedBox(width: 20),
+                        const Icon(Icons.receipt,
+                            size: 20, color: Colors.white),
+                        const SizedBox(width: 20),
                         const Text(
                           'Repositorios',
                           style: TextStyle(
@@ -163,7 +164,7 @@ class _UserPageState extends State<UserPage> {
                         const SizedBox(width: 170),
                         Text(
                           provider1.decodeJson['public_repos'].toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                           ),
                         ),
@@ -171,17 +172,20 @@ class _UserPageState extends State<UserPage> {
                     ),
                     SizedBox(height: 20),
                     Row(
-                      children: [
-                        Icon(Icons.dataset_outlined,color: Colors.orange,),
+                      children: const [
+                        Icon(
+                          Icons.dataset_outlined,
+                          color: Colors.orange,
+                        ),
                         SizedBox(width: 20),
-                        const Text(
+                        Text(
                           'Organizaçoes',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
                           ),
                         ),
-                        const SizedBox(width: 170),
+                        SizedBox(width: 170),
                         Text(
                           '0',
                           style: TextStyle(
@@ -192,17 +196,17 @@ class _UserPageState extends State<UserPage> {
                     ),
                     SizedBox(height: 20),
                     Row(
-                      children: [
-                        Icon(Icons.star,color: Colors.yellow),
+                      children: const [
+                        Icon(Icons.star, color: Colors.yellow),
                         SizedBox(width: 20),
-                        const Text(
+                        Text(
                           'Classificado como Estrela',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
                           ),
                         ),
-                        const SizedBox(width: 50),
+                        SizedBox(width: 50),
                         Text(
                           '15',
                           style: TextStyle(

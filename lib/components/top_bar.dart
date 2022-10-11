@@ -149,12 +149,12 @@ class _TopBarState extends State<TopBar> {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
               left: 65,
               top: 210,
               child: Text(
                 ('Seguidor'),
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
@@ -174,12 +174,12 @@ class _TopBarState extends State<TopBar> {
                 left: 170,
                 top: 211,
                 child: Text(provider.decodeJson['following'].toString())),
-            Positioned(
+            const Positioned(
               left: 200,
               top: 211,
               child: Text(
                 'Seguindo',
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
