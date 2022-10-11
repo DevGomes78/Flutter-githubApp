@@ -35,44 +35,100 @@ class _UserPageState extends State<UserPage> {
     ApiMyProject provider = Provider.of<ApiMyProject>(context);
 
     return Scaffold(
-       backgroundColor: Colors.black26,
-        body: Column(
-          children: [
-            TopBar(),
-            const SizedBox(height: 20),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 2.4,
-              child:
-                  Stack(
-                    children: const [
-                      Positioned(
-                        left: 15,
-                        child: Icon(
-                          Icons.star_border,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                      Positioned(
-                        left: 55,
-                        top: 5,
-                        child: Text(
-                          'Popular',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
+      backgroundColor: Colors.black26,
+      body: Column(
+        children: [
+          const TopBar(),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: SizedBox(
+              height: 20,
+              child: Row(
+                children: const [
+                  Icon(
+                    Icons.star_border,
+                    color: Colors.white,
+                    size: 30,
                   ),
-
-
-
-              
+                  SizedBox(width: 15),
+                  Text(
+                    'Popular',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ));
+          ),
+          SizedBox(height: 10),
+          Container(
+            height: 160,
+            width: double.infinity,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: provider.list.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 5,
+                    child: Container(
+                      height: 160,
+                      width: 220,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: NetworkImage(provider
+                                      .list[index].owner!.avatarUrl
+                                      .toString()),
+                                ),
+                                SizedBox(width: 10),
+                                Text(
+                                  provider.list[index].owner!.login.toString(),
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                  ),
+                                )
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Text(provider.list[index].name.toString()),
+                            const SizedBox(height: 30),
+                            Row(
+                              children: [
+                                const Icon(Icons.star,color: Colors.yellow,),
+                                const SizedBox(width: 10,),
+                                Text(provider.list[index].stargazersCount.toString()),
+                                const SizedBox(width: 15,),
+                                Container(
+                                  height: 15,
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Colors.lightBlue
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Text(provider.list[index].language.toString()),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+          )
+        ],
+      ),
+    );
   }
 }

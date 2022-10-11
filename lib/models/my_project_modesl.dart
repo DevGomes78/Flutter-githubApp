@@ -212,7 +212,6 @@ class MyProjectModels {
     sshUrl = json['ssh_url'];
     cloneUrl = json['clone_url'];
     svnUrl = json['svn_url'];
-    homepage = json['homepage'];
     size = json['size'];
     stargazersCount = json['stargazers_count'];
     watchersCount = json['watchers_count'];
@@ -295,7 +294,6 @@ class MyProjectModels {
     data['ssh_url'] = this.sshUrl;
     data['clone_url'] = this.cloneUrl;
     data['svn_url'] = this.svnUrl;
-    data['homepage'] = this.homepage;
     data['size'] = this.size;
     data['stargazers_count'] = this.stargazersCount;
     data['watchers_count'] = this.watchersCount;
