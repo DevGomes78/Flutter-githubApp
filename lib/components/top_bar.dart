@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import '../controller/api_folowers.dart';
 import '../controller/api_user_service.dart';
 
-
 class TopBar extends StatefulWidget {
   const TopBar({Key? key}) : super(key: key);
 
@@ -29,6 +28,7 @@ class _TopBarState extends State<TopBar> {
     controller.getUser();
     controller2.getFolowing();
   }
+
   @override
   Widget build(BuildContext context) {
     ApiController provider = Provider.of<ApiController>(context);
@@ -36,7 +36,7 @@ class _TopBarState extends State<TopBar> {
     return Card(
       elevation: 5,
       child: Container(
-        height: 230,
+        height: 270,
         alignment: Alignment.bottomCenter,
         width: MediaQuery.of(context).size.width,
         color: Colors.black26,
@@ -44,7 +44,7 @@ class _TopBarState extends State<TopBar> {
           children: [
             Positioned(
               left: 15,
-              top: 50,
+              top: 70,
               child: CircleAvatar(
                 radius: 35,
                 backgroundImage: NetworkImage(
@@ -54,7 +54,7 @@ class _TopBarState extends State<TopBar> {
             ),
             Positioned(
               left: 100,
-              top: 60,
+              top: 80,
               child: Text(
                 provider.decodeJson['name'],
                 style: const TextStyle(
@@ -66,7 +66,7 @@ class _TopBarState extends State<TopBar> {
             ),
             Positioned(
               left: 100,
-              top: 90,
+              top: 110,
               child: Text(
                 provider.decodeJson['login'],
                 style: const TextStyle(
@@ -77,7 +77,7 @@ class _TopBarState extends State<TopBar> {
             ),
             const Positioned(
               left: 15,
-              top: 130,
+              top: 150,
               child: Text(
                 'Desenvolvedor Flutter',
                 style: TextStyle(
@@ -88,7 +88,7 @@ class _TopBarState extends State<TopBar> {
             ),
             const Positioned(
               left: 15,
-              top: 160,
+              top: 180,
               child: Icon(
                 Icons.link,
                 color: Colors.grey,
@@ -97,7 +97,7 @@ class _TopBarState extends State<TopBar> {
             ),
             Positioned(
               left: 35,
-              top: 162,
+              top: 182,
               child: Text(
                 provider.decodeJson['blog'],
                 style: const TextStyle(
@@ -132,7 +132,7 @@ class _TopBarState extends State<TopBar> {
             ),
             const Positioned(
               left: 15,
-              top: 185,
+              top: 208,
               child: Icon(
                 Icons.person_outline_rounded,
                 color: Colors.white54,
@@ -141,7 +141,7 @@ class _TopBarState extends State<TopBar> {
             ),
             Positioned(
               left: 45,
-              top: 185,
+              top: 210,
               child: Text(
                 folowers.list.length.toString(),
                 style: const TextStyle(
@@ -151,12 +151,36 @@ class _TopBarState extends State<TopBar> {
             ),
             Positioned(
               left: 65,
-              top: 185,
+              top: 210,
               child: Text(
                 ('Seguidor'),
                 style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Positioned(
+              left: 145,
+              top: 215,
+              child: Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
                   color: Colors.white,
                 ),
+              ),
+            ),
+            Positioned(
+                left: 170,
+                top: 211,
+                child: Text(provider.decodeJson['following'].toString())),
+            Positioned(
+              left: 200,
+              top: 211,
+              child: Text(
+                'Seguindo',
+                style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ],

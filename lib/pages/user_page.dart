@@ -15,6 +15,7 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   late final ApiMyProject controller;
   late final ApiRepository controller2;
+  late final ApiController controller3;
 
   @override
   void initState() {
@@ -25,14 +26,17 @@ class _UserPageState extends State<UserPage> {
   loadData() {
     controller = context.read<ApiMyProject>();
     controller2 = context.read<ApiRepository>();
+    controller3 = context.read<ApiController>();
 
     controller.getMyProject();
     controller2.getFolowing();
+    controller3.getUser();
   }
 
   @override
   Widget build(BuildContext context) {
     ApiMyProject provider = Provider.of<ApiMyProject>(context);
+    ApiController provider1 = Provider.of<ApiController>(context);
 
     return Scaffold(
       backgroundColor: Colors.black26,
@@ -64,8 +68,8 @@ class _UserPageState extends State<UserPage> {
               ),
             ),
           ),
-          SizedBox(height: 15),
-          Container(
+          const SizedBox(height: 15),
+          SizedBox(
             height: 160,
             width: double.infinity,
             child: ListView.builder(
@@ -90,10 +94,10 @@ class _UserPageState extends State<UserPage> {
                                       .list[index].owner!.avatarUrl
                                       .toString()),
                                 ),
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 Text(
                                   provider.list[index].owner!.login.toString(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.grey,
                                   ),
                                 )
@@ -104,17 +108,24 @@ class _UserPageState extends State<UserPage> {
                             const SizedBox(height: 30),
                             Row(
                               children: [
-                                const Icon(Icons.star,color: Colors.yellow,),
-                                const SizedBox(width: 10,),
-                                Text(provider.list[index].stargazersCount.toString()),
-                                const SizedBox(width: 15,),
+                                const Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(provider.list[index].stargazersCount
+                                    .toString()),
+                                const SizedBox(
+                                  width: 15,
+                                ),
                                 Container(
                                   height: 15,
                                   width: 15,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: Colors.lightBlue
-                                  ),
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Colors.lightBlue),
                                 ),
                                 const SizedBox(width: 10),
                                 Text(provider.list[index].language.toString()),
@@ -133,8 +144,78 @@ class _UserPageState extends State<UserPage> {
             child: SizedBox(
               height: 220,
               width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.receipt, size: 20, color: Colors.white),
+                        SizedBox(width: 20),
+                        const Text(
+                          'Repositorios',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(width: 170),
+                        Text(
+                          provider1.decodeJson['public_repos'].toString(),
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Icon(Icons.dataset_outlined,color: Colors.orange,),
+                        SizedBox(width: 20),
+                        const Text(
+                          'Organizaçoes',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(width: 170),
+                        Text(
+                          '0',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Icon(Icons.star,color: Colors.yellow),
+                        SizedBox(width: 20),
+                        const Text(
+                          'Classificado como Estrela',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(width: 50),
+                        Text(
+                          '15',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
