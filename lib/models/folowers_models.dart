@@ -20,23 +20,23 @@ class folowersModels {
 
   folowersModels(
       {this.login,
-        this.id,
-        this.nodeId,
-        this.avatarUrl,
-        this.gravatarId,
-        this.url,
-        this.htmlUrl,
-        this.followersUrl,
-        this.followingUrl,
-        this.gistsUrl,
-        this.starredUrl,
-        this.subscriptionsUrl,
-        this.organizationsUrl,
-        this.reposUrl,
-        this.eventsUrl,
-        this.receivedEventsUrl,
-        this.type,
-        this.siteAdmin});
+      this.id,
+      this.nodeId,
+      this.avatarUrl,
+      this.gravatarId,
+      this.url,
+      this.htmlUrl,
+      this.followersUrl,
+      this.followingUrl,
+      this.gistsUrl,
+      this.starredUrl,
+      this.subscriptionsUrl,
+      this.organizationsUrl,
+      this.reposUrl,
+      this.eventsUrl,
+      this.receivedEventsUrl,
+      this.type,
+      this.siteAdmin});
 
   folowersModels.fromJson(Map<String, dynamic> json) {
     login = json['login'];

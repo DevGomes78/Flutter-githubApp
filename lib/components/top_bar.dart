@@ -101,14 +101,14 @@ class _TopBarState extends State<TopBar> {
               child: Text(
                 provider.decodeJson['blog'],
                 style: const TextStyle(
-                  fontSize: 10,
+                  fontSize: 12,
                   color: Colors.white,
                 ),
               ),
             ),
             Positioned(
-              left: 240,
-              top: 20,
+              left: 290,
+              top: 30,
               child: IconButton(
                 onPressed: () {},
                 icon: const Icon(
@@ -119,8 +119,8 @@ class _TopBarState extends State<TopBar> {
               ),
             ),
             Positioned(
-              left: 280,
-              top: 20,
+              left: 320,
+              top: 30,
               child: IconButton(
                 onPressed: () {},
                 icon: const Icon(
