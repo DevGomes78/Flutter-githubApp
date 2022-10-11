@@ -39,11 +39,11 @@ class _UserPageState extends State<UserPage> {
       body: Column(
         children: [
           const TopBar(),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: SizedBox(
-              height: 20,
+              height: 25,
               child: Row(
                 children: const [
                   Icon(
@@ -51,7 +51,7 @@ class _UserPageState extends State<UserPage> {
                     color: Colors.white,
                     size: 30,
                   ),
-                  SizedBox(width: 15),
+                  SizedBox(width: 10),
                   Text(
                     'Popular',
                     style: TextStyle(
@@ -64,7 +64,7 @@ class _UserPageState extends State<UserPage> {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           Container(
             height: 160,
             width: double.infinity,
@@ -119,13 +119,21 @@ class _UserPageState extends State<UserPage> {
                                 const SizedBox(width: 10),
                                 Text(provider.list[index].language.toString()),
                               ],
-                            )
+                            ),
                           ],
                         ),
                       ),
                     ),
                   );
                 }),
+          ),
+          const SizedBox(width: 10),
+          Card(
+            elevation: 5,
+            child: SizedBox(
+              height: 220,
+              width: MediaQuery.of(context).size.width,
+            ),
           )
         ],
       ),
