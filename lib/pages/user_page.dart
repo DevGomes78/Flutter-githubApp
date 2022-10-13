@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../components/bottonnavigationBar.dart';
 import '../components/top_bar.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,7 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   ApiRepository apiRepository = ApiRepository();
   ApiUserController apiUserController = ApiUserController();
+  late WebViewController controller;
 
   @override
   void initState() {
@@ -34,8 +36,7 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     ApiRepository providerRepository = Provider.of<ApiRepository>(context);
-    ApiUserController providerUserController =
-        Provider.of<ApiUserController>(context);
+    ApiUserController providerUserController = Provider.of<ApiUserController>(context);
 
     return Scaffold(
       backgroundColor: Colors.black26,
@@ -59,7 +60,7 @@ class _UserPageState extends State<UserPage> {
   }
 
   cardInfos(BuildContext context, ApiUserController providerUserController) {
-    return Padding(
+  return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Card(
         elevation: 5,
@@ -67,7 +68,7 @@ class _UserPageState extends State<UserPage> {
           height: 200,
           width: MediaQuery.of(context).size.width,
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -98,24 +99,16 @@ class _UserPageState extends State<UserPage> {
                 const SizedBox(height: 20),
                 Row(
                   children: const [
-                    Icon(
-                      Icons.dataset_outlined,
-                      color: Colors.orange,
-                    ),
+                    Icon(Icons.dataset_outlined, color: Colors.orange),
                     SizedBox(width: 20),
                     Text(
                       StringConstants.organizations,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                     SizedBox(width: 150),
                     Text(
                       '0',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
+                      style: TextStyle(fontSize: 18),
                     ),
                   ],
                 ),
@@ -126,17 +119,12 @@ class _UserPageState extends State<UserPage> {
                     SizedBox(width: 0),
                     Text(
                       StringConstants.ratedAsStar,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                     SizedBox(width: 45),
                     Text(
                       '15',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
+                      style: TextStyle(fontSize: 18),
                     ),
                   ],
                 ),
@@ -146,11 +134,12 @@ class _UserPageState extends State<UserPage> {
         ),
       ),
     );
+}
   }
 
   listRepository(ApiRepository providerRepository) {
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: const EdgeInsets.all(5.0),
       child: SizedBox(
         height: 160,
         width: double.infinity,
@@ -186,14 +175,22 @@ class _UserPageState extends State<UserPage> {
                           ],
                         ),
                         const SizedBox(height: 10),
-                        Text(listRepository.name.toString()),
+                        InkWell(
+                            onTap: (){
+                                 WebView(
+                                   javascriptMode: JavascriptMode.unrestricted,
+                                   initialUrl:'https://github.com/DevGomes78' ,
+                                   onWebViewCreated: (controller){
+                                     controller = controller;
+                                   }
+                                 );
+                            },
+                            child:
+                        Text(listRepository.name.toString())),
                         const SizedBox(height: 30),
                         Row(
                           children: [
-                            const Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                            ),
+                            const Icon(Icons.star, color: Colors.yellow),
                             const SizedBox(
                               width: 10,
                             ),
@@ -229,23 +226,18 @@ class _UserPageState extends State<UserPage> {
         height: 25,
         child: Row(
           children: const [
-            Icon(
-              Icons.star_border,
-              color: Colors.white,
-              size: 30,
-            ),
+            Icon(Icons.star_border, color: Colors.white, size: 30),
             SizedBox(width: 10),
             Text(
               StringConstants.popular,
               style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
             ),
           ],
         ),
       ),
     );
   }
-}
+

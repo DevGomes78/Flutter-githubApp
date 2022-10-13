@@ -10,7 +10,7 @@ class ApiRepository extends ChangeNotifier {
 
   Future<List<RepositoyModels>> getFolowing() async {
     try {
-      var url = Uri.parse(ServiceConstants.apiRepository);
+      var url = Uri.parse(ServiceConstants.repositoryService);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         var decodeJson = jsonDecode(response.body);

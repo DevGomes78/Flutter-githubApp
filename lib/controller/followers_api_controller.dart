@@ -10,7 +10,7 @@ class ApiFolowers extends ChangeNotifier {
 
   Future<List<folowersModels>> getFolowing() async {
     try {
-      var url = Uri.parse(ServiceConstants.apiFolowers);
+      var url = Uri.parse(ServiceConstants.folowersService);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         var decodeJson = jsonDecode(response.body);

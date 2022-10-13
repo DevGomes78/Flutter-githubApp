@@ -10,7 +10,7 @@ class ApiUserController extends ChangeNotifier {
 
   Future<Map<String, dynamic>?> getUser() async {
     try {
-      var url = Uri.parse(ServiceConstants.apiUserController);
+      var url = Uri.parse(ServiceConstants.userService);
       var response = await http.get(url);
       if (response.statusCode == 200) {
         decodeJson = jsonDecode(response.body);

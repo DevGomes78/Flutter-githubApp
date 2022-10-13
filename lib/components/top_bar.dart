@@ -42,7 +42,7 @@ class _TopBarState extends State<TopBar> {
     ApiFolowers userFolowers,
   ) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: Card(
         elevation: 5,
         child: Container(
@@ -68,10 +68,9 @@ class _TopBarState extends State<TopBar> {
                 child: Text(
                   userProvider.decodeJson['name'],
                   style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
               ),
               Positioned(
@@ -79,10 +78,7 @@ class _TopBarState extends State<TopBar> {
                 top: 110,
                 child: Text(
                   userProvider.decodeJson['login'],
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.white54,
-                  ),
+                  style: const TextStyle(fontSize: 18, color: Colors.white54),
                 ),
               ),
               const Positioned(
@@ -110,10 +106,7 @@ class _TopBarState extends State<TopBar> {
                 top: 182,
                 child: Text(
                   userProvider.decodeJson['blog'],
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
-                  ),
+                  style: const TextStyle(fontSize: 12, color: Colors.white),
                 ),
               ),
               Positioned(
@@ -121,23 +114,16 @@ class _TopBarState extends State<TopBar> {
                 top: 30,
                 child: IconButton(
                   onPressed: () {},
-                  icon: const Icon(
-                    Icons.share,
-                    color: Colors.blue,
-                    size: 25,
-                  ),
+                  icon: const Icon(Icons.share, color: Colors.blue, size: 25),
                 ),
               ),
               Positioned(
-                left: 320,
+                left: 330,
                 top: 30,
                 child: IconButton(
                   onPressed: () {},
-                  icon: const Icon(
-                    Icons.settings,
-                    color: Colors.blue,
-                    size: 25,
-                  ),
+                  icon:
+                      const Icon(Icons.settings, color: Colors.blue, size: 25),
                 ),
               ),
               const Positioned(
