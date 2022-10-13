@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../controller/api_folowers.dart';
-import '../controller/api_user_service.dart';
+import '../controller/followers_api_controller.dart';
+import '../controller/api_user_controller.dart';
 
 class TopBar extends StatefulWidget {
   const TopBar({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class TopBar extends StatefulWidget {
 }
 
 class _TopBarState extends State<TopBar> {
-  late final ApiController controller;
+  late final ApiUserController controller;
   late final ApiFolowers controller2;
 
   @override
@@ -22,7 +22,7 @@ class _TopBarState extends State<TopBar> {
   }
 
   loadData() {
-    controller = context.read<ApiController>();
+    controller = context.read<ApiUserController>();
     controller2 = context.read<ApiFolowers>();
 
     controller.getUser();
@@ -31,159 +31,162 @@ class _TopBarState extends State<TopBar> {
 
   @override
   Widget build(BuildContext context) {
-    ApiController provider = Provider.of<ApiController>(context);
+    ApiUserController provider = Provider.of<ApiUserController>(context);
     ApiFolowers folowers = Provider.of<ApiFolowers>(context);
-    return Card(
-      elevation: 5,
-      child: Container(
-        height: 270,
-        alignment: Alignment.bottomCenter,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.black26,
-        child: Stack(
-          children: [
-            Positioned(
-              left: 15,
-              top: 70,
-              child: CircleAvatar(
-                radius: 35,
-                backgroundImage: NetworkImage(
-                  provider.decodeJson['avatar_url'],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        elevation: 5,
+        child: Container(
+          height: 270,
+          alignment: Alignment.bottomCenter,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.black26,
+          child: Stack(
+            children: [
+              Positioned(
+                left: 15,
+                top: 70,
+                child: CircleAvatar(
+                  radius: 35,
+                  backgroundImage: NetworkImage(
+                    provider.decodeJson['avatar_url'],
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-              left: 100,
-              top: 80,
-              child: Text(
-                provider.decodeJson['name'],
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Positioned(
-              left: 100,
-              top: 110,
-              child: Text(
-                provider.decodeJson['login'],
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.white54,
-                ),
-              ),
-            ),
-            const Positioned(
-              left: 15,
-              top: 150,
-              child: Text(
-                'Desenvolvedor Flutter',
-                style: TextStyle(
-                    fontSize: 20,
+              Positioned(
+                left: 100,
+                top: 80,
+                child: Text(
+                  provider.decodeJson['name'],
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-            const Positioned(
-              left: 15,
-              top: 180,
-              child: Icon(
-                Icons.link,
-                color: Colors.grey,
-                size: 18,
-              ),
-            ),
-            Positioned(
-              left: 35,
-              top: 182,
-              child: Text(
-                provider.decodeJson['blog'],
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.white,
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-              left: 290,
-              top: 30,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.share,
-                  color: Colors.blue,
-                  size: 25,
+              Positioned(
+                left: 100,
+                top: 110,
+                child: Text(
+                  provider.decodeJson['login'],
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white54,
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-              left: 320,
-              top: 30,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.settings,
-                  color: Colors.blue,
-                  size: 25,
+              const Positioned(
+                left: 15,
+                top: 150,
+                child: Text(
+                  'Desenvolvedor Flutter',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700),
                 ),
               ),
-            ),
-            const Positioned(
-              left: 15,
-              top: 208,
-              child: Icon(
-                Icons.person_outline_rounded,
-                color: Colors.white54,
-                size: 20,
-              ),
-            ),
-            Positioned(
-              left: 45,
-              top: 210,
-              child: Text(
-                folowers.list.length.toString(),
-                style: const TextStyle(
-                  color: Colors.white,
+              const Positioned(
+                left: 15,
+                top: 180,
+                child: Icon(
+                  Icons.link,
+                  color: Colors.grey,
+                  size: 18,
                 ),
               ),
-            ),
-            const Positioned(
-              left: 65,
-              top: 210,
-              child: Text(
-                ('Seguidor'),
-                style: TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Positioned(
-              left: 145,
-              top: 215,
-              child: Container(
-                height: 10,
-                width: 10,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.white,
+              Positioned(
+                left: 35,
+                top: 182,
+                child: Text(
+                  provider.decodeJson['blog'],
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-                left: 170,
+              Positioned(
+                left: 290,
+                top: 30,
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.share,
+                    color: Colors.blue,
+                    size: 25,
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 320,
+                top: 30,
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.settings,
+                    color: Colors.blue,
+                    size: 25,
+                  ),
+                ),
+              ),
+              const Positioned(
+                left: 15,
+                top: 208,
+                child: Icon(
+                  Icons.person_outline_rounded,
+                  color: Colors.white54,
+                  size: 20,
+                ),
+              ),
+              Positioned(
+                left: 45,
+                top: 210,
+                child: Text(
+                  folowers.list.length.toString(),
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              const Positioned(
+                left: 65,
+                top: 210,
+                child: Text(
+                  ('Seguidor'),
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Positioned(
+                left: 145,
+                top: 215,
+                child: Container(
+                  height: 10,
+                  width: 10,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Positioned(
+                  left: 170,
+                  top: 211,
+                  child: Text(provider.decodeJson['following'].toString())),
+              const Positioned(
+                left: 200,
                 top: 211,
-                child: Text(provider.decodeJson['following'].toString())),
-            const Positioned(
-              left: 200,
-              top: 211,
-              child: Text(
-                'Seguindo',
-                style: TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.bold),
+                child: Text(
+                  'Seguindo',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

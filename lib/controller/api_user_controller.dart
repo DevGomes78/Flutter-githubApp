@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 
-class ApiController extends ChangeNotifier{
+class ApiUserController extends ChangeNotifier{
   var baseUrl = 'https://api.github.com/users/DevGomes78';
   var decodeJson;
 
