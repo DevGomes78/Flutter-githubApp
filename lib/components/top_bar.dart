@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_github_app/constants/string_constants.dart';
 import 'package:provider/provider.dart';
-
 import '../controller/followers_api_controller.dart';
 import '../controller/api_user_controller.dart';
 
@@ -12,8 +12,8 @@ class TopBar extends StatefulWidget {
 }
 
 class _TopBarState extends State<TopBar> {
-  late final ApiUserController controller;
-  late final ApiFolowers controller2;
+  late final ApiUserController apiUserController;
+  late final ApiFolowers apiFolowers;
 
   @override
   void initState() {
@@ -22,17 +22,17 @@ class _TopBarState extends State<TopBar> {
   }
 
   loadData() {
-    controller = context.read<ApiUserController>();
-    controller2 = context.read<ApiFolowers>();
+    apiUserController = context.read<ApiUserController>();
+    apiFolowers = context.read<ApiFolowers>();
 
-    controller.getUser();
-    controller2.getFolowing();
+    apiUserController.getUser();
+    apiFolowers.getFolowing();
   }
 
   @override
   Widget build(BuildContext context) {
-    ApiUserController provider = Provider.of<ApiUserController>(context);
-    ApiFolowers folowers = Provider.of<ApiFolowers>(context);
+    ApiUserController userProvider = Provider.of<ApiUserController>(context);
+    ApiFolowers userFolowers = Provider.of<ApiFolowers>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
@@ -50,7 +50,7 @@ class _TopBarState extends State<TopBar> {
                 child: CircleAvatar(
                   radius: 35,
                   backgroundImage: NetworkImage(
-                    provider.decodeJson['avatar_url'],
+                    userProvider.decodeJson['avatar_url'],
                   ),
                 ),
               ),
@@ -58,7 +58,7 @@ class _TopBarState extends State<TopBar> {
                 left: 100,
                 top: 80,
                 child: Text(
-                  provider.decodeJson['name'],
+                  userProvider.decodeJson['name'],
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class _TopBarState extends State<TopBar> {
                 left: 100,
                 top: 110,
                 child: Text(
-                  provider.decodeJson['login'],
+                  userProvider.decodeJson['login'],
                   style: const TextStyle(
                     fontSize: 18,
                     color: Colors.white54,
@@ -81,7 +81,7 @@ class _TopBarState extends State<TopBar> {
                 left: 15,
                 top: 150,
                 child: Text(
-                  'Desenvolvedor Flutter',
+                  StringConstants.flutterDeveloper,
                   style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
@@ -101,7 +101,7 @@ class _TopBarState extends State<TopBar> {
                 left: 35,
                 top: 182,
                 child: Text(
-                  provider.decodeJson['blog'],
+                  userProvider.decodeJson['blog'],
                   style: const TextStyle(
                     fontSize: 12,
                     color: Colors.white,
@@ -145,7 +145,7 @@ class _TopBarState extends State<TopBar> {
                 left: 45,
                 top: 210,
                 child: Text(
-                  folowers.list.length.toString(),
+                  userFolowers.list.length.toString(),
                   style: const TextStyle(
                     color: Colors.white,
                   ),
@@ -155,7 +155,7 @@ class _TopBarState extends State<TopBar> {
                 left: 65,
                 top: 210,
                 child: Text(
-                  ('Seguidor'),
+                  (StringConstants.folower),
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
@@ -173,14 +173,17 @@ class _TopBarState extends State<TopBar> {
                 ),
               ),
               Positioned(
-                  left: 170,
-                  top: 211,
-                  child: Text(provider.decodeJson['following'].toString())),
+                left: 170,
+                top: 211,
+                child: Text(
+                  userProvider.decodeJson['following'].toString(),
+                ),
+              ),
               const Positioned(
                 left: 200,
                 top: 211,
                 child: Text(
-                  'Seguindo',
+                  StringConstants.folowing,
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),

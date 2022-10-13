@@ -65,12 +65,17 @@ class _UserPageState extends State<UserPage> {
       fixedColor: Colors.blueAccent,
       items: const [
         BottomNavigationBarItem(
-            icon: Icon(Icons.home), label: (StringConstants.home)),
+          icon: Icon(Icons.home),
+          label: (StringConstants.home),
+        ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_none),
-            label: (StringConstants.notifications)),
+          icon: Icon(Icons.notifications_none),
+          label: (StringConstants.notifications),
+        ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.person), label: (StringConstants.profile)),
+          icon: Icon(Icons.person),
+          label: (StringConstants.profile),
+        ),
       ],
     );
   }
