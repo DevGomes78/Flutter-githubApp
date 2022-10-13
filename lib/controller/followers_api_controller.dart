@@ -8,8 +8,7 @@ class ApiFolowers extends ChangeNotifier {
   List<folowersModels> list = [];
 
   Future<List<folowersModels>> getFolowing() async {
-
-    var url = Uri.parse(ServiceConstants.apiUserController);
+    var url = Uri.parse(ServiceConstants.apiFolowers);
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var decodeJson = jsonDecode(response.body);

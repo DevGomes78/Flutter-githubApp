@@ -13,8 +13,8 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  late final ApiRepository apiRepository;
-  late final ApiUserController apiUserController;
+   ApiRepository apiRepository = ApiRepository();
+   ApiUserController apiUserController= ApiUserController();
 
   @override
   void initState() {
