@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_github_app/constants/service_constants.dart';
 import 'package:http/http.dart' as http;
 
 
 class ApiUserController extends ChangeNotifier{
-  var baseUrl = 'https://api.github.com/users/DevGomes78';
+  var baseUrl = ServiceConstants.apiUserController;
   var decodeJson;
 
   Future <Map<String,dynamic>> getUser()async{

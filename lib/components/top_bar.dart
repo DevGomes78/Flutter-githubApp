@@ -33,6 +33,14 @@ class _TopBarState extends State<TopBar> {
   Widget build(BuildContext context) {
     ApiUserController userProvider = Provider.of<ApiUserController>(context);
     ApiFolowers userFolowers = Provider.of<ApiFolowers>(context);
+    return topBar(context, userProvider, userFolowers);
+  }
+
+  topBar(
+    BuildContext context,
+    ApiUserController userProvider,
+    ApiFolowers userFolowers,
+  ) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
