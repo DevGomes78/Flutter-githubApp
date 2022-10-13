@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import '../components/bottonnavigationBar.dart';
 import '../components/top_bar.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +16,6 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   ApiRepository apiRepository = ApiRepository();
   ApiUserController apiUserController = ApiUserController();
-  late WebViewController controller;
 
   @override
   void initState() {
@@ -116,12 +114,12 @@ class _UserPageState extends State<UserPage> {
                 Row(
                   children: const [
                     Icon(Icons.star, color: Colors.yellow),
-                    SizedBox(width: 0),
+                    SizedBox(width: 15),
                     Text(
                       StringConstants.ratedAsStar,
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
-                    SizedBox(width: 45),
+                    SizedBox(width: 30),
                     Text(
                       '15',
                       style: TextStyle(fontSize: 18),
@@ -177,13 +175,7 @@ class _UserPageState extends State<UserPage> {
                         const SizedBox(height: 10),
                         InkWell(
                             onTap: (){
-                                 WebView(
-                                   javascriptMode: JavascriptMode.unrestricted,
-                                   initialUrl:'https://github.com/DevGomes78' ,
-                                   onWebViewCreated: (controller){
-                                     controller = controller;
-                                   }
-                                 );
+
                             },
                             child:
                         Text(listRepository.name.toString())),
