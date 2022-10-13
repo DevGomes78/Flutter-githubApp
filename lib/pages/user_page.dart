@@ -47,9 +47,7 @@ class _UserPageState extends State<UserPage> {
             textPopular(),
             const SizedBox(height: 15),
             providerRepository.list.isEmpty
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
+                ? const Center(child: CircularProgressIndicator())
                 : listRepository(providerRepository),
             const SizedBox(width: 10),
             cardInfos(context, providerUserController),
@@ -62,7 +60,7 @@ class _UserPageState extends State<UserPage> {
 
   cardInfos(BuildContext context, ApiUserController providerUserController) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: Card(
         elevation: 5,
         child: SizedBox(
@@ -133,7 +131,7 @@ class _UserPageState extends State<UserPage> {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(width: 40),
+                    SizedBox(width: 45),
                     Text(
                       '15',
                       style: TextStyle(
@@ -152,7 +150,7 @@ class _UserPageState extends State<UserPage> {
 
   listRepository(ApiRepository providerRepository) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(3.0),
       child: SizedBox(
         height: 160,
         width: double.infinity,
@@ -226,7 +224,7 @@ class _UserPageState extends State<UserPage> {
 
   textPopular() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: SizedBox(
         height: 25,
         child: Row(
