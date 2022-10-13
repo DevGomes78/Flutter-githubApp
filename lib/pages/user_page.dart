@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/top_bar.dart';
 import 'package:provider/provider.dart';
+import '../constants/string_constants.dart';
 import '../controller/api_repository_controller.dart';
 import '../controller/api_user_controller.dart';
 
@@ -32,7 +33,8 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     ApiRepository providerRepository = Provider.of<ApiRepository>(context);
-    ApiUserController providerUserController = Provider.of<ApiUserController>(context);
+    ApiUserController providerUserController =
+        Provider.of<ApiUserController>(context);
 
     return Scaffold(
       backgroundColor: Colors.black26,
@@ -62,10 +64,13 @@ class _UserPageState extends State<UserPage> {
       currentIndex: 0,
       fixedColor: Colors.blueAccent,
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ("Home")),
         BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_none), label: ("Notificaçoes")),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: ("Perfil")),
+            icon: Icon(Icons.home), label: (StringConstants.home)),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.notifications_none),
+            label: (StringConstants.notifications)),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.person), label: (StringConstants.profile)),
       ],
     );
   }
@@ -85,10 +90,14 @@ class _UserPageState extends State<UserPage> {
               children: [
                 Row(
                   children: [
-                    const Icon(Icons.receipt, size: 20, color: Colors.white),
+                    const Icon(
+                      Icons.receipt,
+                      size: 20,
+                      color: Colors.white,
+                    ),
                     const SizedBox(width: 20),
                     const Text(
-                      'Repositorios',
+                      StringConstants.repository,
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -104,7 +113,7 @@ class _UserPageState extends State<UserPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   children: const [
                     Icon(
@@ -113,7 +122,7 @@ class _UserPageState extends State<UserPage> {
                     ),
                     SizedBox(width: 20),
                     Text(
-                      'Organizaçoes',
+                      StringConstants.organizations,
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -128,13 +137,13 @@ class _UserPageState extends State<UserPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   children: const [
                     Icon(Icons.star, color: Colors.yellow),
                     SizedBox(width: 0),
                     Text(
-                      'Classificado como Estrela',
+                      StringConstants.ratedAsStar,
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -245,7 +254,7 @@ class _UserPageState extends State<UserPage> {
             ),
             SizedBox(width: 10),
             Text(
-              'Popular',
+              StringConstants.popular,
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.white,

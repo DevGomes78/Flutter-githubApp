@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import '../models/git_hub_repository.dart';
+import '../models/repository_model.dart';
 
 class ApiRepository extends ChangeNotifier{
   List<RepositoyModels>list =[];
