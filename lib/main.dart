@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_github_app/pages/home_page.dart';
 import 'package:provider/provider.dart';
 
-import 'controller/followers_api_controller.dart';
-import 'controller/api_repository_controller.dart';
-import 'controller/api_user_controller.dart';
+import 'controller/apiFollowers.dart';
+import 'controller/api_repository.dart';
+import 'controller/api_user.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/constants/string_constants.dart';
 import 'package:provider/provider.dart';
-import '../controller/followers_api_controller.dart';
-import '../controller/api_user_controller.dart';
+import '../controller/apiFollowers.dart';
+import '../controller/api_user.dart';
 
 class TopBar extends StatefulWidget {
   const TopBar({Key? key}) : super(key: key);

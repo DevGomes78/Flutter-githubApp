@@ -3,8 +3,8 @@ import '../components/bottonnavigationBar.dart';
 import '../components/top_bar.dart';
 import 'package:provider/provider.dart';
 import '../constants/string_constants.dart';
-import '../controller/api_repository_controller.dart';
-import '../controller/api_user_controller.dart';
+import '../controller/api_repository.dart';
+import '../controller/api_user.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
