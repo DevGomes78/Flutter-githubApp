@@ -14,8 +14,6 @@ class ApiUserController extends ChangeNotifier {
       var response = await http.get(url);
       if (response.statusCode == 200) {
         decodeJson = jsonDecode(response.body);
-        notifyListeners();
-        return decodeJson;
       }
     } catch (e) {
       print('${ErrorConstants.erroAoAcessarPagina}$e');
