@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/bottonnavigationBar.dart';
 import '../components/top_bar.dart';
 import 'package:provider/provider.dart';
 import '../constants/string_constants.dart';
@@ -13,8 +14,8 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-   ApiRepository apiRepository = ApiRepository();
-   ApiUserController apiUserController= ApiUserController();
+  ApiRepository apiRepository = ApiRepository();
+  ApiUserController apiUserController = ApiUserController();
 
   @override
   void initState() {
@@ -59,27 +60,6 @@ class _UserPageState extends State<UserPage> {
     );
   }
 
-  buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      currentIndex: 0,
-      fixedColor: Colors.blueAccent,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: (StringConstants.home),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.notifications_none),
-          label: (StringConstants.notifications),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: (StringConstants.profile),
-        ),
-      ],
-    );
-  }
-
   cardInfos(BuildContext context, ApiUserController providerUserController) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -110,8 +90,7 @@ class _UserPageState extends State<UserPage> {
                     ),
                     const SizedBox(width: 150),
                     Text(
-                      providerUserController.decodeJson['public_repos']
-                          .toString(),
+                      apiUserController.decodeJson['public_repos'].toString(),
                       style: const TextStyle(
                         fontSize: 18,
                       ),
