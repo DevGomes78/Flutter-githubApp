@@ -44,7 +44,7 @@ class _RepositoryListState extends State<RepositoryList> {
                 child: Card(
                   elevation: 5,
                   child: SizedBox(
-                    height: 130,
+                    height: 110,
                     width: 220,
                     child: Padding(
                       padding: const EdgeInsets.all(15),
@@ -62,7 +62,7 @@ class _RepositoryListState extends State<RepositoryList> {
                           Text(
                             listRepository.description.toString(),
                             style: const TextStyle(
-                              fontSize: 15,
+                              fontSize: 14,
                              color: Colors.grey,
                             ),
                           ),

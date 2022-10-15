@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_app/pages/repository_list.dart';
+import 'package:flutter_github_app/pages/repository_list_page.dart';
 import '../components/bottonnavigationBar.dart';
 import '../components/top_bar.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +29,7 @@ class _UserPageState extends State<UserPage> {
     apiRepository = context.read<ApiRepository>();
     apiUserController = context.read<ApiUserController>();
 
-    apiRepository.getRepository();
+    apiRepository.getPopular();
     apiUserController.getUser();
   }
 
@@ -185,7 +185,7 @@ listRepository(ApiRepository providerRepository) {
                             )
                           ],
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 8),
                         Text(
                           listRepository.name.toString(),
                           style: const TextStyle(
