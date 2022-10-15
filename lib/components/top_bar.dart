@@ -106,7 +106,7 @@ class _TopBarState extends State<TopBar> {
                 left: 35,
                 top: 182,
                 child: InkWell(
-                  onTap: CallLinkedin().callLinkedin,
+                  onTap: const CallLinkedin().callLinkedin,
                   child: Text(
                     userProvider.decodeJson['blog'],
                     style: const TextStyle(fontSize: 12, color: Colors.white),

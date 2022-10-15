@@ -8,7 +8,7 @@ import '../models/repository_model.dart';
 class ApiRepository extends ChangeNotifier {
   List<RepositoyModels> list = [];
 
-  Future<List<RepositoyModels>> getFolowing() async {
+  Future<List<RepositoyModels>> getRepository() async {
     try {
       var url = Uri.parse(ServiceConstants.repositoryService);
       var response = await http.get(url);
