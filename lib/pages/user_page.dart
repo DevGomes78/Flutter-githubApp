@@ -148,7 +148,8 @@ class _UserPageState extends State<UserPage> {
             itemBuilder: (context, index) {
               var listRepository = providerRepository.list[index];
               return InkWell(
-                onTap: CallRepository(repositoyModels: listRepository).callGithub,
+                onTap: CallRepository(
+                    repositoyModels: listRepository).callGithub,
                 child: Card(
                   elevation: 5,
                   child: SizedBox(

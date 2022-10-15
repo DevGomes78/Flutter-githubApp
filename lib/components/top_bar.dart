@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/constants/string_constants.dart';
+import 'package:flutter_github_app/controller/call_linkedin.dart';
 import 'package:provider/provider.dart';
 import '../controller/apiFollowers.dart';
 import '../controller/api_user.dart';
@@ -104,9 +105,12 @@ class _TopBarState extends State<TopBar> {
               Positioned(
                 left: 35,
                 top: 182,
-                child: Text(
-                  userProvider.decodeJson['blog'],
-                  style: const TextStyle(fontSize: 12, color: Colors.white),
+                child: InkWell(
+                  onTap: CallLinkedin().callLinkedin,
+                  child: Text(
+                    userProvider.decodeJson['blog'],
+                    style: const TextStyle(fontSize: 12, color: Colors.white),
+                  ),
                 ),
               ),
               Positioned(
