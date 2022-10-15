@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../constants/string_constants.dart';
 import '../controller/api_repository.dart';
 import '../controller/api_user.dart';
+import '../controller/call_repository.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -146,62 +147,60 @@ class _UserPageState extends State<UserPage> {
             itemCount: providerRepository.list.length,
             itemBuilder: (context, index) {
               var listRepository = providerRepository.list[index];
-              return Card(
-                elevation: 5,
-                child: SizedBox(
-                  height: 160,
-                  width: 220,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 20,
-                              backgroundImage: NetworkImage(
-                                  listRepository.owner!.avatarUrl.toString()),
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              listRepository.owner!.login.toString(),
-                              style: const TextStyle(
-                                color: Colors.grey,
+              return InkWell(
+                onTap: CallRepository(repositoyModels: listRepository).callGithub,
+                child: Card(
+                  elevation: 5,
+                  child: SizedBox(
+                    height: 160,
+                    width: 220,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 20,
+                                backgroundImage: NetworkImage(
+                                    listRepository.owner!.avatarUrl.toString()),
                               ),
-                            )
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        InkWell(
-                            onTap: (){
-
-                            },
-                            child:
-                        Text(listRepository.name.toString())),
-                        const SizedBox(height: 30),
-                        Row(
-                          children: [
-                            const Icon(Icons.star, color: Colors.yellow),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(listRepository.stargazersCount.toString()),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Container(
-                              height: 15,
-                              width: 15,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Colors.lightBlue),
-                            ),
-                            const SizedBox(width: 10),
-                            Text(listRepository.language.toString()),
-                          ],
-                        ),
-                      ],
+                              const SizedBox(width: 10),
+                              Text(
+                                listRepository.owner!.login.toString(),
+                                style: const TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              )
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Text(listRepository.name.toString()),
+                          const SizedBox(height: 30),
+                          Row(
+                            children: [
+                              const Icon(Icons.star, color: Colors.yellow),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(listRepository.stargazersCount.toString()),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Container(
+                                height: 15,
+                                width: 15,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Colors.lightBlue),
+                              ),
+                              const SizedBox(width: 10),
+                              Text(listRepository.language.toString()),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
