@@ -7,6 +7,6 @@ class StringConstants{
   static const ratedAsStar='Classificado como Estrela';
   static const popular = 'Popular';
   static const flutterDeveloper ='Desenvolvedor Flutter';
-  static const folower = 'Seguidor';
+  static const folower = 'Seguidores';
   static const folowing = 'Seguindo';
 }

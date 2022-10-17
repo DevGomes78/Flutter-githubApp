@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/constants/string_constants.dart';
 import 'package:flutter_github_app/controller/call_linkedin.dart';
+import 'package:flutter_github_app/pages/folowers_page.dart';
 import 'package:provider/provider.dart';
 import '../controller/apiFollowers.dart';
 import '../controller/api_user.dart';
@@ -14,7 +15,6 @@ class TopBar extends StatefulWidget {
 
 class _TopBarState extends State<TopBar> {
   late final ApiUserController apiUserController;
-  late final ApiFolowers apiFolowers;
 
   @override
   void initState() {
@@ -24,23 +24,20 @@ class _TopBarState extends State<TopBar> {
 
   loadData() {
     apiUserController = context.read<ApiUserController>();
-    apiFolowers = context.read<ApiFolowers>();
 
     apiUserController.getUser();
-    apiFolowers.getFolowing();
   }
 
   @override
   Widget build(BuildContext context) {
     ApiUserController userProvider = Provider.of<ApiUserController>(context);
-    ApiFolowers userFolowers = Provider.of<ApiFolowers>(context);
-    return topBar(context, userProvider, userFolowers);
+
+    return topBar(context, userProvider);
   }
 
   topBar(
     BuildContext context,
     ApiUserController userProvider,
-    ApiFolowers userFolowers,
   ) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
@@ -79,15 +76,18 @@ class _TopBarState extends State<TopBar> {
                 top: 110,
                 child: Text(
                   userProvider.decodeJson['login'],
-                  style: const TextStyle(fontSize: 18, color: Colors.white54),
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white54,
+                  ),
                 ),
               ),
-              const Positioned(
+              Positioned(
                 left: 15,
                 top: 150,
                 child: Text(
-                  StringConstants.flutterDeveloper,
-                  style: TextStyle(
+                  userProvider.decodeJson['bio'].toString(),
+                  style: const TextStyle(
                       fontSize: 20,
                       color: Colors.white,
                       fontWeight: FontWeight.w700),
@@ -143,19 +143,25 @@ class _TopBarState extends State<TopBar> {
                 left: 45,
                 top: 210,
                 child: Text(
-                  userFolowers.list.length.toString(),
+                  userProvider.decodeJson['followers'].toString(),
                   style: const TextStyle(
                     color: Colors.white,
                   ),
                 ),
               ),
-              const Positioned(
+              Positioned(
                 left: 65,
                 top: 210,
-                child: Text(
-                  (StringConstants.folower),
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context)=>const FolowersPage()));
+                  },
+                  child: const Text(
+                    (StringConstants.folower),
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
               Positioned(

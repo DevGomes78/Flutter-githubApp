@@ -15,7 +15,6 @@ class ApiFolowers extends ChangeNotifier {
       if (response.statusCode == 200) {
         var decodeJson = jsonDecode(response.body);
         decodeJson.forEach((item) => list.add(folowersModels.fromJson(item)));
-        notifyListeners();
         return list;
       }
     } catch (e) {
