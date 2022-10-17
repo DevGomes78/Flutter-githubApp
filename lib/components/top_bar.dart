@@ -3,7 +3,6 @@ import 'package:flutter_github_app/constants/string_constants.dart';
 import 'package:flutter_github_app/controller/call_linkedin.dart';
 import 'package:flutter_github_app/pages/folowers_page.dart';
 import 'package:provider/provider.dart';
-import '../controller/apiFollowers.dart';
 import '../controller/api_user.dart';
 
 class TopBar extends StatefulWidget {
@@ -16,17 +15,7 @@ class TopBar extends StatefulWidget {
 class _TopBarState extends State<TopBar> {
   late final ApiUserController apiUserController;
 
-  @override
-  void initState() {
-    loadData();
-    super.initState();
-  }
 
-  loadData() {
-    apiUserController = context.read<ApiUserController>();
-
-    apiUserController.getUser();
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -15,22 +15,18 @@ class _FolowersPageState extends State<FolowersPage> {
 
   @override
   void initState() {
-    loadData();
-    super.initState();
-  }
-
-  loadData() {
     apiFolowers = context.read<ApiFolowers>();
     apiFolowers.getFolowing();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ApiFolowers>(context);
+    ApiFolowers provider = Provider.of<ApiFolowers>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(StringConstants.folower),
-      ),
+  appBar: AppBar(
+    title: const Text(StringConstants.folower),
+  ),
       body: provider.list.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : folowerList(provider),
@@ -41,18 +37,18 @@ class _FolowersPageState extends State<FolowersPage> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ListView.builder(
-          itemCount: provider.list.length,
-          itemBuilder: (context, index) {
-            var lista = provider.list[index];
-            return Card(
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(lista.avatarUrl.toString()),
-                ),
-                title: Text(lista.login.toString()),
+        itemCount: provider.list.length,
+        itemBuilder: (context, index) {
+          var lista = provider.list[index];
+          return Card(
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(lista.avatarUrl.toString()),
               ),
-            );
-          },
+              title: Text(lista.login.toString()),
+            ),
+          );
+        },
       ),
     );
   }

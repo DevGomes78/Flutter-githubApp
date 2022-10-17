@@ -21,23 +21,19 @@ class _UserPageState extends State<UserPage> {
 
   @override
   void initState() {
-    loadData();
-    super.initState();
-  }
-
-  loadData() {
     apiRepository = context.read<ApiRepository>();
     apiUserController = context.read<ApiUserController>();
 
     apiRepository.getPopular();
     apiUserController.getUser();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    ApiRepository providerRepository = Provider.of<ApiRepository>(context);
-    ApiUserController providerUserController =
-        Provider.of<ApiUserController>(context);
+    final providerRepository = Provider.of<ApiRepository>(context);
+    final providerUserController = Provider.of<ApiUserController>(context);
+
 
     return Scaffold(
       backgroundColor: Colors.black26,
@@ -60,7 +56,7 @@ class _UserPageState extends State<UserPage> {
     );
   }
 
-  cardInfos(BuildContext context, ApiUserController providerUserController) {
+  cardInfos(BuildContext context, providerUserController) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Card(
@@ -86,7 +82,7 @@ class _UserPageState extends State<UserPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RepositoryList()));
+                                builder: (context) => const RepositoryList()));
                       },
                       child: const Text(
                         StringConstants.repository,
