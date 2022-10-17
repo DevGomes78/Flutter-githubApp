@@ -87,7 +87,7 @@ class _UserPageState extends State<UserPage> {
                       child: const Text(
                         StringConstants.repository,
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 20,
                           color: Colors.white,
                         ),
                       ),
@@ -108,7 +108,7 @@ class _UserPageState extends State<UserPage> {
                     SizedBox(width: 20),
                     Text(
                       StringConstants.organizations,
-                      style: TextStyle(fontSize: 10, color: Colors.white),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                     SizedBox(width: 150),
                     Text(
@@ -124,7 +124,7 @@ class _UserPageState extends State<UserPage> {
                     SizedBox(width: 15),
                     Text(
                       StringConstants.ratedAsStar,
-                      style: TextStyle(fontSize: 10, color: Colors.white),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                     SizedBox(width: 30),
                     Text(
