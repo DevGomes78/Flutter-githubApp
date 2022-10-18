@@ -13,10 +13,14 @@ class TopBar extends StatefulWidget {
 }
 
 class _TopBarState extends State<TopBar> {
-  late final ApiUserController apiUserController;
+   ApiUserController apiUserController = ApiUserController();
+  @override
+  void initState() {
+    apiUserController = context.read<ApiUserController>();
+    apiUserController.getUser();
 
-
-
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     ApiUserController userProvider = Provider.of<ApiUserController>(context);
@@ -142,9 +146,11 @@ class _TopBarState extends State<TopBar> {
                 left: 65,
                 top: 210,
                 child: InkWell(
-                  onTap: (){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context)=>const FolowersPage()));
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FolowersPage()));
                   },
                   child: const Text(
                     (StringConstants.folower),

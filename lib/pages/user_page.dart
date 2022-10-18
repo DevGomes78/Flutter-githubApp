@@ -16,130 +16,144 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  ApiRepository apiRepository = ApiRepository();
-  ApiUserController apiUserController = ApiUserController();
+  late final ApiRepository apiRepository;
+
 
   @override
   void initState() {
     apiRepository = context.read<ApiRepository>();
-    apiUserController = context.read<ApiUserController>();
+
 
     apiRepository.getPopular();
-    apiUserController.getUser();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final providerRepository = Provider.of<ApiRepository>(context);
-    final providerUserController = Provider.of<ApiUserController>(context);
 
 
     return Scaffold(
       backgroundColor: Colors.black26,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const TopBar(),
-            const SizedBox(height: 10),
-            textPopular(),
-            const SizedBox(height: 15),
-            providerRepository.list.isEmpty
-                ? const Center(child: CircularProgressIndicator())
-                : listRepository(providerRepository),
-            const SizedBox(width: 10),
-            cardInfos(context, providerUserController),
-          ],
+        child: FutureBuilder<Map<String, dynamic>>(
+          future: ApiUserController().getUser(),
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+              case ConnectionState.waiting:
+                return const Center(child: CircularProgressIndicator());
+              default:
+                if (snapshot.hasError) {
+                  return const Center(
+                    child: Text('Erro ao carregar dados :('),
+                  );
+                } else {
+                  return Column(
+                    children: [
+                      const TopBar(),
+                      const SizedBox(height: 10),
+                      textPopular(),
+                      const SizedBox(height: 15),
+                      providerRepository.list.isEmpty
+                          ? const Center(child: CircularProgressIndicator())
+                          : listRepository(providerRepository),
+                      const SizedBox(width: 10),
+                      cardInfos(context,snapshot),
+                    ],
+                  );
+                }
+            }
+          },
         ),
       ),
       bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
+}
 
-  cardInfos(BuildContext context, providerUserController) {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Card(
-        elevation: 5,
-        child: SizedBox(
-          height: 200,
-          width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.receipt,
-                      size: 20,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(width: 20),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const RepositoryList()));
-                      },
-                      child: const Text(
-                        StringConstants.repository,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
+cardInfos(BuildContext context,  AsyncSnapshot<Map<String, dynamic>> snapshot) {
+  return Padding(
+    padding: const EdgeInsets.all(5.0),
+    child: Card(
+      elevation: 5,
+      child: SizedBox(
+        height: 200,
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const Icon(
+                    Icons.receipt,
+                    size: 20,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: 20),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RepositoryList()));
+                    },
+                    child: const Text(
+                      StringConstants.repository,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
                       ),
                     ),
-                    const SizedBox(width: 150),
-                    Text(
-                      apiUserController.decodeJson['public_repos'].toString(),
-                      style: const TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  children: const [
-                    Icon(Icons.dataset_outlined, color: Colors.orange),
-                    SizedBox(width: 20),
-                    Text(
-                      StringConstants.organizations,
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
-                    SizedBox(width: 150),
-                    Text(
-                      '0',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  children: const [
-                    Icon(Icons.star, color: Colors.yellow),
-                    SizedBox(width: 15),
-                    Text(
-                      StringConstants.ratedAsStar,
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
-                    SizedBox(width: 30),
-                    Text(
-                      '16',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  const SizedBox(width: 150),
+                  Text(
+                      snapshot.data!['public_repos']
+                          .toString(),
+                      style: const TextStyle(fontSize: 18)),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: const [
+                  Icon(Icons.dataset_outlined, color: Colors.orange),
+                  SizedBox(width: 20),
+                  Text(
+                    StringConstants.organizations,
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  SizedBox(width: 150),
+                  Text(
+                    '0',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: const [
+                  Icon(Icons.star, color: Colors.yellow),
+                  SizedBox(width: 15),
+                  Text(
+                    StringConstants.ratedAsStar,
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  SizedBox(width: 30),
+                  Text(
+                    '16',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
 
 listRepository(ApiRepository providerRepository) {
