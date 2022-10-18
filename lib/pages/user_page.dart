@@ -18,11 +18,9 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   late final ApiRepository apiRepository;
 
-
   @override
   void initState() {
     apiRepository = context.read<ApiRepository>();
-
 
     apiRepository.getPopular();
 
@@ -32,7 +30,6 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     final providerRepository = Provider.of<ApiRepository>(context);
-
 
     return Scaffold(
       backgroundColor: Colors.black26,
@@ -60,7 +57,7 @@ class _UserPageState extends State<UserPage> {
                           ? const Center(child: CircularProgressIndicator())
                           : listRepository(providerRepository),
                       const SizedBox(width: 10),
-                      cardInfos(context,snapshot),
+                      cardInfos(context, snapshot),
                     ],
                   );
                 }
@@ -73,7 +70,7 @@ class _UserPageState extends State<UserPage> {
   }
 }
 
-cardInfos(BuildContext context,  AsyncSnapshot<Map<String, dynamic>> snapshot) {
+cardInfos(BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
     child: Card(
@@ -110,9 +107,7 @@ cardInfos(BuildContext context,  AsyncSnapshot<Map<String, dynamic>> snapshot) {
                     ),
                   ),
                   const SizedBox(width: 150),
-                  Text(
-                      snapshot.data!['public_repos']
-                          .toString(),
+                  Text(snapshot.data!['public_repos'].toString(),
                       style: const TextStyle(fontSize: 18)),
                 ],
               ),
