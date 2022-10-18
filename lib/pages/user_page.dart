@@ -40,7 +40,7 @@ class _UserPageState extends State<UserPage> {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
               case ConnectionState.waiting:
-                return const Center(child: CircularProgressIndicator());
+                return const Center(child: Text('Carregando...'));
               default:
                 if (snapshot.hasError) {
                   return const Center(
