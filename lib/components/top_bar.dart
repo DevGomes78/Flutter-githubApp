@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_github_app/constants/service_constants.dart';
 import 'package:flutter_github_app/constants/string_constants.dart';
 import 'package:flutter_github_app/controller/call_linkedin.dart';
 import 'package:flutter_github_app/pages/folowers_page.dart';
@@ -62,7 +63,7 @@ class _TopBarState extends State<TopBar> {
                               child: CircleAvatar(
                                 radius: 35,
                                 backgroundImage: NetworkImage(
-                                  provider.decodeJson['avatar_url'],
+                                  provider.decodeJson[ServiceConstants.avatarUrl],
                                 ),
                               ),
                             ),
@@ -70,7 +71,7 @@ class _TopBarState extends State<TopBar> {
                               left: 100,
                               top: 80,
                               child: Text(
-                                provider.decodeJson['name'],
+                                provider.decodeJson[ServiceConstants.name],
                                 style: const TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
@@ -81,7 +82,7 @@ class _TopBarState extends State<TopBar> {
                               left: 100,
                               top: 110,
                               child: Text(
-                                provider.decodeJson['login'],
+                                provider.decodeJson[ServiceConstants.login],
                                 style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white54,
@@ -92,7 +93,7 @@ class _TopBarState extends State<TopBar> {
                               left: 15,
                               top: 150,
                               child: Text(
-                                provider.decodeJson['bio'].toString(),
+                                provider.decodeJson[ServiceConstants.bio],
                                 style: const TextStyle(
                                     fontSize: 20,
                                     color: Colors.white,
@@ -114,7 +115,7 @@ class _TopBarState extends State<TopBar> {
                               child: InkWell(
                                 onTap: const CallLinkedin().callLinkedin,
                                 child: Text(
-                                  provider.decodeJson['blog'],
+                                  provider.decodeJson[ServiceConstants.blog],
                                   style: const TextStyle(
                                       fontSize: 12, color: Colors.white),
                                 ),
@@ -151,7 +152,7 @@ class _TopBarState extends State<TopBar> {
                               left: 45,
                               top: 210,
                               child: Text(
-                                provider.decodeJson['followers'].toString(),
+                                provider.decodeJson[ServiceConstants.followers].toString(),
                                 style: const TextStyle(
                                   color: Colors.white,
                                 ),
@@ -192,7 +193,7 @@ class _TopBarState extends State<TopBar> {
                               left: 170,
                               top: 211,
                               child: Text(
-                                provider.decodeJson['following'].toString(),
+                                provider.decodeJson[ServiceConstants.following].toString(),
                               ),
                             ),
                             const Positioned(
