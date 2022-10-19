@@ -9,4 +9,7 @@ class StringConstants{
   static const flutterDeveloper ='Desenvolvedor Flutter';
   static const folower = 'Seguidores';
   static const folowing = 'Seguindo';
+  static const waiting='Carregando...';
+  static const holdUp='aguarde...';
+
 }

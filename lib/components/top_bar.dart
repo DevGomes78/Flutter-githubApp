@@ -39,7 +39,7 @@ class _TopBarState extends State<TopBar> {
             case ConnectionState.waiting:
               return Center(
                 child: Container(
-                  color: Colors.transparent,
+                  color: Colors.grey,
                 ),
               );
             default:
@@ -48,169 +48,173 @@ class _TopBarState extends State<TopBar> {
                   child: Text(ErrorConstants.errorPage),
                 );
               } else {
-                return topBarCard(context, provider);
+                return Card(
+                  elevation: 5,
+                  child: Container(
+                    height: 270,
+                    alignment: Alignment.bottomCenter,
+                    width: MediaQuery.of(context).size.width,
+                    color: Colors.black26,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 15,
+                          top: 70,
+                          child: CircleAvatar(
+                            radius: 35,
+                            backgroundImage: NetworkImage(
+                              provider.decodeJson[ServiceConstants.avatarUrl],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 100,
+                          top: 80,
+                          child: Text(
+                            provider.decodeJson[ServiceConstants.name],
+                            style: const TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                        ),
+                        Positioned(
+                          left: 100,
+                          top: 110,
+                          child: Text(
+                            provider.decodeJson[ServiceConstants.login],
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.white54,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 15,
+                          top: 150,
+                          child: Text(
+                            provider.decodeJson[ServiceConstants.bio],
+                            style: const TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                        const Positioned(
+                          left: 15,
+                          top: 180,
+                          child: Icon(
+                            Icons.link,
+                            color: Colors.grey,
+                            size: 18,
+                          ),
+                        ),
+                        Positioned(
+                          left: 35,
+                          top: 182,
+                          child: InkWell(
+                            onTap: const CallLinkedin().callLinkedin,
+                            child: Text(
+                              provider.decodeJson[ServiceConstants.blog],
+                              style: const TextStyle(
+                                  fontSize: 12, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 290,
+                          top: 30,
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.share,
+                                color: Colors.blue, size: 25),
+                          ),
+                        ),
+                        Positioned(
+                          left: 330,
+                          top: 30,
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.settings,
+                                color: Colors.blue, size: 25),
+                          ),
+                        ),
+                        const Positioned(
+                          left: 15,
+                          top: 208,
+                          child: Icon(
+                            Icons.person_outline_rounded,
+                            color: Colors.white54,
+                            size: 20,
+                          ),
+                        ),
+                        Positioned(
+                          left: 45,
+                          top: 210,
+                          child: Text(
+                            provider.decodeJson[ServiceConstants.followers]
+                                .toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 65,
+                          top: 210,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const FolowersPage()));
+                            },
+                            child: const Text(
+                              (StringConstants.folower),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 145,
+                          top: 215,
+                          child: Container(
+                            height: 10,
+                            width: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 170,
+                          top: 211,
+                          child: Text(
+                            provider.decodeJson[ServiceConstants.following]
+                                .toString(),
+                          ),
+                        ),
+                        const Positioned(
+                          left: 200,
+                          top: 211,
+                          child: Text(
+                            StringConstants.folowing,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
               }
           }
         },
-      ),
-    );
-  }
-
-  topBarCard(BuildContext context, UserController provider) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        height: 270,
-        alignment: Alignment.bottomCenter,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.black26,
-        child: Stack(
-          children: [
-            Positioned(
-              left: 15,
-              top: 70,
-              child: CircleAvatar(
-                radius: 35,
-                backgroundImage: NetworkImage(
-                  provider.decodeJson[ServiceConstants.avatarUrl],
-                ),
-              ),
-            ),
-            Positioned(
-              left: 100,
-              top: 80,
-              child: Text(
-                provider.decodeJson[ServiceConstants.name],
-                style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-            ),
-            Positioned(
-              left: 100,
-              top: 110,
-              child: Text(
-                provider.decodeJson[ServiceConstants.login],
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.white54,
-                ),
-              ),
-            ),
-            Positioned(
-              left: 15,
-              top: 150,
-              child: Text(
-                provider.decodeJson[ServiceConstants.bio],
-                style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-            const Positioned(
-              left: 15,
-              top: 180,
-              child: Icon(
-                Icons.link,
-                color: Colors.grey,
-                size: 18,
-              ),
-            ),
-            Positioned(
-              left: 35,
-              top: 182,
-              child: InkWell(
-                onTap: const CallLinkedin().callLinkedin,
-                child: Text(
-                  provider.decodeJson[ServiceConstants.blog],
-                  style: const TextStyle(fontSize: 12, color: Colors.white),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 290,
-              top: 30,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.share, color: Colors.blue, size: 25),
-              ),
-            ),
-            Positioned(
-              left: 330,
-              top: 30,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.settings, color: Colors.blue, size: 25),
-              ),
-            ),
-            const Positioned(
-              left: 15,
-              top: 208,
-              child: Icon(
-                Icons.person_outline_rounded,
-                color: Colors.white54,
-                size: 20,
-              ),
-            ),
-            Positioned(
-              left: 45,
-              top: 210,
-              child: Text(
-                provider.decodeJson[ServiceConstants.followers].toString(),
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Positioned(
-              left: 65,
-              top: 210,
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const FolowersPage()));
-                },
-                child: const Text(
-                  (StringConstants.folower),
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            Positioned(
-              left: 145,
-              top: 215,
-              child: Container(
-                height: 10,
-                width: 10,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Positioned(
-              left: 170,
-              top: 211,
-              child: Text(
-                provider.decodeJson[ServiceConstants.following].toString(),
-              ),
-            ),
-            const Positioned(
-              left: 200,
-              top: 211,
-              child: Text(
-                StringConstants.folowing,
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
