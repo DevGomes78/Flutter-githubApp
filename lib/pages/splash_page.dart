@@ -42,12 +42,13 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(height: 70),
               Image.asset(
                 'image/git.png',
                 color: Colors.white,
-                height: 220,
+                height: 180,
               ),
-              const SizedBox(height: 190),
+              const SizedBox(height: 90),
                const Text(
                 StringConstants.holdUp,
                 style: TextStyle(color: Colors.white),
