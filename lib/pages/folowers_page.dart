@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/constants/string_constants.dart';
-import 'package:flutter_github_app/controller/apiFollowers.dart';
+import 'package:flutter_github_app/controller/followers_controller.dart';
 import 'package:provider/provider.dart';
 
 class FolowersPage extends StatefulWidget {
@@ -11,18 +11,18 @@ class FolowersPage extends StatefulWidget {
 }
 
 class _FolowersPageState extends State<FolowersPage> {
-  ApiFolowers apiFolowers = ApiFolowers();
+  FolowersController folowersController = FolowersController();
 
   @override
   void initState() {
-    apiFolowers = context.read<ApiFolowers>();
-    apiFolowers.getFolowing();
+    folowersController = context.read<FolowersController>();
+    folowersController.getFolowing();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    ApiFolowers provider = Provider.of<ApiFolowers>(context);
+    FolowersController provider = Provider.of<FolowersController>(context);
     return Scaffold(
   appBar: AppBar(
     title: const Text(StringConstants.folower),

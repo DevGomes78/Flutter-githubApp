@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/pages/home_page.dart';
 import 'package:provider/provider.dart';
-
-import 'controller/apiFollowers.dart';
-import 'controller/api_repository.dart';
-import 'controller/api_user.dart';
+import 'controller/followers_controller.dart';
+import 'controller/repository_controller.dart';
+import 'controller/user_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,13 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
 providers: [
-  ChangeNotifierProvider(create: (context)=>ApiUserController()),
-  ChangeNotifierProvider(create: (context)=>ApiRepository()),
-  ChangeNotifierProvider(create: (context)=>ApiFolowers()),
+  ChangeNotifierProvider(create: (context)=>UserController()),
+  ChangeNotifierProvider(create: (context)=>RepositoryController()),
+  ChangeNotifierProvider(create: (context)=>FolowersController()),
 ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           brightness: Brightness.dark

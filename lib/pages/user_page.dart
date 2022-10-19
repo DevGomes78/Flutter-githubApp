@@ -3,9 +3,10 @@ import 'package:flutter_github_app/pages/repository_list_page.dart';
 import '../components/bottonnavigationBar.dart';
 import '../components/top_bar.dart';
 import 'package:provider/provider.dart';
+import '../constants/error_constants.dart';
 import '../constants/string_constants.dart';
-import '../controller/api_repository.dart';
-import '../controller/api_user.dart';
+import '../controller/repository_controller.dart';
+import '../controller/user_controller.dart';
 import '../controller/call_repository.dart';
 
 class UserPage extends StatefulWidget {
@@ -16,48 +17,51 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  late final ApiRepository apiRepository;
+  RepositoryController controller = RepositoryController();
 
   @override
   void initState() {
-    apiRepository = context.read<ApiRepository>();
+    controller = context.read<RepositoryController>();
 
-    apiRepository.getPopular();
+    controller.getPopular();
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final providerRepository = Provider.of<ApiRepository>(context);
+    final providerRepository = Provider.of<RepositoryController>(context);
 
     return Scaffold(
       backgroundColor: Colors.black26,
       body: SingleChildScrollView(
         child: FutureBuilder<Map<String, dynamic>>(
-          future: ApiUserController().getUser(),
+          future: UserController().getUser(),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
               case ConnectionState.waiting:
-                return const Center(child: Text('Carregando...'));
+                return Center(
+                    child: Container(
+                  color: Colors.transparent,
+                ));
               default:
                 if (snapshot.hasError) {
                   return const Center(
-                    child: Text('Erro ao carregar dados :('),
+                    child: Text(ErrorConstants.errorPage),
                   );
                 } else {
                   return Column(
                     children: [
                       const TopBar(),
                       const SizedBox(height: 10),
-                      textPopular(),
+                      _textPopular(),
                       const SizedBox(height: 15),
                       providerRepository.list.isEmpty
                           ? const Center(child: CircularProgressIndicator())
-                          : listRepository(providerRepository),
+                          : _listRepository(providerRepository),
                       const SizedBox(width: 10),
-                      cardInfos(context, snapshot),
+                      _cardInfos(context, snapshot),
                     ],
                   );
                 }
@@ -70,7 +74,7 @@ class _UserPageState extends State<UserPage> {
   }
 }
 
-cardInfos(BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
+_cardInfos(BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
     child: Card(
@@ -151,7 +155,7 @@ cardInfos(BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
   );
 }
 
-listRepository(ApiRepository providerRepository) {
+_listRepository(RepositoryController providerRepository) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
     child: SizedBox(
@@ -233,7 +237,7 @@ listRepository(ApiRepository providerRepository) {
   );
 }
 
-textPopular() {
+_textPopular() {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 5),
     child: SizedBox(

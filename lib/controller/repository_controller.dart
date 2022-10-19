@@ -5,7 +5,7 @@ import '../constants/error_constants.dart';
 import '../constants/service_constants.dart';
 import '../models/repository_model.dart';
 
-class ApiRepository extends ChangeNotifier {
+class RepositoryController extends ChangeNotifier {
   List<RepositoyModels> list = [];
 
   Future<List<RepositoyModels>> getRepository() async {

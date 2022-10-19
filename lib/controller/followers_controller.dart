@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../constants/error_constants.dart';
 import '../models/folowers_models.dart';
 
-class ApiFolowers extends ChangeNotifier {
+class FolowersController extends ChangeNotifier {
   List<folowersModels> list = [];
 
   Future<List<folowersModels>> getFolowing() async {

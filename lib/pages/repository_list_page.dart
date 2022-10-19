@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../controller/api_repository.dart';
+import '../controller/repository_controller.dart';
 import '../controller/call_repository.dart';
 
 class RepositoryList extends StatefulWidget {
@@ -12,7 +12,7 @@ class RepositoryList extends StatefulWidget {
 }
 
 class _RepositoryListState extends State<RepositoryList> {
-  ApiRepository apiRepository = ApiRepository();
+  RepositoryController controller = RepositoryController();
 
   @override
   void initState() {
@@ -21,14 +21,14 @@ class _RepositoryListState extends State<RepositoryList> {
   }
 
   loadData() {
-    apiRepository = context.read<ApiRepository>();
+    controller= context.read<RepositoryController>();
 
-    apiRepository.getRepository();
+    controller.getRepository();
   }
 
   @override
   Widget build(BuildContext context) {
-    ApiRepository providerRepository = Provider.of<ApiRepository>(context);
+    RepositoryController providerRepository = Provider.of<RepositoryController>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Repositorios'),

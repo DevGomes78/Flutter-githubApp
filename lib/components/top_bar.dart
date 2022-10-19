@@ -3,7 +3,8 @@ import 'package:flutter_github_app/constants/string_constants.dart';
 import 'package:flutter_github_app/controller/call_linkedin.dart';
 import 'package:flutter_github_app/pages/folowers_page.dart';
 import 'package:provider/provider.dart';
-import '../controller/api_user.dart';
+import '../constants/error_constants.dart';
+import '../controller/user_controller.dart';
 
 class TopBar extends StatefulWidget {
   const TopBar({Key? key}) : super(key: key);
@@ -13,24 +14,24 @@ class TopBar extends StatefulWidget {
 }
 
 class _TopBarState extends State<TopBar> {
-  ApiUserController apiUserController = ApiUserController();
+  UserController userController = UserController();
 
   @override
   void initState() {
-    apiUserController = context.read<ApiUserController>();
-    apiUserController.getUser();
+    userController = context.read<UserController>();
+    userController.getUser();
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    ApiUserController userProvider = Provider.of<ApiUserController>(context);
+    UserController provider = Provider.of<UserController>(context);
 
     return Padding(
         padding: const EdgeInsets.all(5.0),
         child: FutureBuilder<Map<String, dynamic>>(
-            future: ApiUserController().getUser(),
+            future: UserController().getUser(),
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.none:
@@ -42,8 +43,8 @@ class _TopBarState extends State<TopBar> {
                   );
                 default:
                   if (snapshot.hasError) {
-                    return const Center(
-                      child: Text('Erro ao carregar dados :('),
+                    return  const Center(
+                      child: Text(ErrorConstants.errorPage),
                     );
                   } else {
                     return Card(
@@ -61,7 +62,7 @@ class _TopBarState extends State<TopBar> {
                               child: CircleAvatar(
                                 radius: 35,
                                 backgroundImage: NetworkImage(
-                                  userProvider.decodeJson['avatar_url'],
+                                  provider.decodeJson['avatar_url'],
                                 ),
                               ),
                             ),
@@ -69,7 +70,7 @@ class _TopBarState extends State<TopBar> {
                               left: 100,
                               top: 80,
                               child: Text(
-                                userProvider.decodeJson['name'],
+                                provider.decodeJson['name'],
                                 style: const TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
@@ -80,7 +81,7 @@ class _TopBarState extends State<TopBar> {
                               left: 100,
                               top: 110,
                               child: Text(
-                                userProvider.decodeJson['login'],
+                                provider.decodeJson['login'],
                                 style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.white54,
@@ -91,7 +92,7 @@ class _TopBarState extends State<TopBar> {
                               left: 15,
                               top: 150,
                               child: Text(
-                                userProvider.decodeJson['bio'].toString(),
+                                provider.decodeJson['bio'].toString(),
                                 style: const TextStyle(
                                     fontSize: 20,
                                     color: Colors.white,
@@ -113,7 +114,7 @@ class _TopBarState extends State<TopBar> {
                               child: InkWell(
                                 onTap: const CallLinkedin().callLinkedin,
                                 child: Text(
-                                  userProvider.decodeJson['blog'],
+                                  provider.decodeJson['blog'],
                                   style: const TextStyle(
                                       fontSize: 12, color: Colors.white),
                                 ),
@@ -150,7 +151,7 @@ class _TopBarState extends State<TopBar> {
                               left: 45,
                               top: 210,
                               child: Text(
-                                userProvider.decodeJson['followers'].toString(),
+                                provider.decodeJson['followers'].toString(),
                                 style: const TextStyle(
                                   color: Colors.white,
                                 ),
@@ -191,7 +192,7 @@ class _TopBarState extends State<TopBar> {
                               left: 170,
                               top: 211,
                               child: Text(
-                                userProvider.decodeJson['following'].toString(),
+                                provider.decodeJson['following'].toString(),
                               ),
                             ),
                             const Positioned(
