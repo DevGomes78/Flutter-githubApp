@@ -75,84 +75,21 @@ class _UserPageState extends State<UserPage> {
   }
 }
 
-_cardInfos(BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
+_textPopular() {
   return Padding(
-    padding: const EdgeInsets.all(5.0),
-    child: Card(
-      elevation: 5,
-      child: SizedBox(
-        height: 200,
-        width: MediaQuery.of(context).size.width,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  const Icon(
-                    Icons.receipt,
-                    size: 20,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(width: 20),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const RepositoryList()));
-                    },
-                    child: const Text(
-                      StringConstants.repository,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 150),
-                  Text(
-                      snapshot.data![ServiceConstants.publicRepository]
-                          .toString(),
-                      style: const TextStyle(fontSize: 18)),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                children: const [
-                  Icon(Icons.dataset_outlined, color: Colors.orange),
-                  SizedBox(width: 20),
-                  Text(
-                    StringConstants.organizations,
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  SizedBox(width: 150),
-                  Text(
-                    '0',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                children: const [
-                  Icon(Icons.star, color: Colors.yellow),
-                  SizedBox(width: 15),
-                  Text(
-                    StringConstants.ratedAsStar,
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  SizedBox(width: 30),
-                  Text(
-                    '16',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ],
-              ),
-            ],
+    padding: const EdgeInsets.symmetric(horizontal: 5),
+    child: SizedBox(
+      height: 25,
+      child: Row(
+        children: const [
+          Icon(Icons.star_border, color: Colors.white, size: 30),
+          SizedBox(width: 10),
+          Text(
+            StringConstants.popular,
+            style: TextStyle(
+                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
           ),
-        ),
+        ],
       ),
     ),
   );
@@ -240,21 +177,87 @@ _listRepository(RepositoryController providerRepository) {
   );
 }
 
-_textPopular() {
+_cardInfos(
+  BuildContext context,
+  AsyncSnapshot<Map<String, dynamic>> snapshot,
+) {
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 5),
-    child: SizedBox(
-      height: 25,
-      child: Row(
-        children: const [
-          Icon(Icons.star_border, color: Colors.white, size: 30),
-          SizedBox(width: 10),
-          Text(
-            StringConstants.popular,
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+    padding: const EdgeInsets.all(5.0),
+    child: Card(
+      elevation: 5,
+      child: SizedBox(
+        height: 200,
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const Icon(
+                    Icons.receipt,
+                    size: 20,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: 20),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RepositoryList()));
+                    },
+                    child: const Text(
+                      StringConstants.repository,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 150),
+                  Text(
+                      snapshot.data![ServiceConstants.publicRepository]
+                          .toString(),
+                      style: const TextStyle(fontSize: 18)),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: const [
+                  Icon(Icons.dataset_outlined, color: Colors.orange),
+                  SizedBox(width: 20),
+                  Text(
+                    StringConstants.organizations,
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  SizedBox(width: 150),
+                  Text(
+                    '0',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: const [
+                  Icon(Icons.star, color: Colors.yellow),
+                  SizedBox(width: 15),
+                  Text(
+                    StringConstants.ratedAsStar,
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  SizedBox(width: 30),
+                  Text(
+                    '16',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     ),
   );
