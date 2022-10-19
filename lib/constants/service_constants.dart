@@ -12,4 +12,5 @@ class ServiceConstants{
   static const blog = 'blog';
   static const followers = 'followers';
   static const following ='following';
+  static const publicRepository='public_repos';
 }

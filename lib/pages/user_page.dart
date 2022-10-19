@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_github_app/constants/service_constants.dart';
 import 'package:flutter_github_app/pages/repository_list_page.dart';
 import '../components/bottonnavigationBar.dart';
 import '../components/top_bar.dart';
@@ -111,7 +112,9 @@ _cardInfos(BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
                     ),
                   ),
                   const SizedBox(width: 150),
-                  Text(snapshot.data!['public_repos'].toString(),
+                  Text(
+                      snapshot.data![ServiceConstants.publicRepository]
+                          .toString(),
                       style: const TextStyle(fontSize: 18)),
                 ],
               ),
