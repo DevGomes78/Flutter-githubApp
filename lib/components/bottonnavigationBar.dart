@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
-
-import '../constants/string_constants.dart';
 buildBottomNavigationBar() {
   return BottomNavigationBar(
-    currentIndex: 0,
-    fixedColor: Colors.blueAccent,
+
+    currentIndex: 2,
+    onTap: (index) {
+    },
+    selectedItemColor: Colors.blueAccent,
+    unselectedItemColor: Colors.black,
     items: const [
       BottomNavigationBarItem(
         icon: Icon(Icons.home),
-        label: (StringConstants.home),
+        label: ('Home'),
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.notifications_none),
-        label: (StringConstants.notifications),
+        icon: Icon(Icons.notifications),
+        label: ('Notificaçoes'),
       ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.notifications),
+        label: ('Notificaçoes'),
+      ),
+
       BottomNavigationBarItem(
         icon: Icon(Icons.person),
-        label: (StringConstants.profile),
+        label: ('Perfil'),
       ),
     ],
+
   );
 }

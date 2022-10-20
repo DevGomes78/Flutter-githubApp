@@ -18,6 +18,7 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+
   RepositoryController controller = RepositoryController();
 
   @override
