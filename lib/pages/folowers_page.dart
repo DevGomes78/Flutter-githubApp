@@ -11,12 +11,12 @@ class FolowersPage extends StatefulWidget {
 }
 
 class _FolowersPageState extends State<FolowersPage> {
-  FolowersController folowersController = FolowersController();
+  FolowersController controller = FolowersController();
 
   @override
   void initState() {
-    folowersController = context.read<FolowersController>();
-    folowersController.getFolowing();
+    controller= context.read<FolowersController>();
+    controller.getFolowing();
     super.initState();
   }
 
@@ -27,30 +27,27 @@ class _FolowersPageState extends State<FolowersPage> {
   appBar: AppBar(
     title: const Text(StringConstants.folower),
   ),
-      body: provider.list.isEmpty
+      body: controller.list.isEmpty
           ? const Center(child: CircularProgressIndicator())
-          : folowerList(provider),
-    );
-  }
-
-  folowerList(provider) {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: ListView.builder(
-        itemCount: provider.list.length,
-        itemBuilder: (context, index) {
-          var lista = provider.list[index];
-          return Card(
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(lista.avatarUrl.toString()),
+          : Padding(
+        padding:  const EdgeInsets.all(5.0),
+        child: ListView.builder(
+          itemCount: controller.list.length,
+          itemBuilder: (context, index) {
+            var lista = controller.list[index];
+            return Card(
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(lista.avatarUrl.toString()),
+                ),
+                title: Text(lista.login.toString()),
               ),
-              title: Text(lista.login.toString()),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
+
 
 }
