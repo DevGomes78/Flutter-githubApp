@@ -45,7 +45,8 @@ class _UserPageState extends State<UserPage> {
                 return Center(
                     child: Container(
                   color: Colors.transparent,
-                ));
+                ),
+                );
               default:
                 if (snapshot.hasError) {
                   return const Center(
@@ -59,7 +60,7 @@ class _UserPageState extends State<UserPage> {
                       _textPopular(),
                       const SizedBox(height: 15),
                       providerRepository.list.isEmpty
-                          ? const Center(child: CircularProgressIndicator())
+                          ?  Center(child: Container())
                           : _listRepository(providerRepository),
                       const SizedBox(width: 10),
                       _cardInfos(context, snapshot),
@@ -112,7 +113,7 @@ _listRepository(RepositoryController providerRepository) {
                 elevation: 5,
                 child: SizedBox(
                   height: 200,
-                  width: 230,
+                  width: 260,
                   child: Padding(
                     padding: const EdgeInsets.all(15),
                     child: Column(
