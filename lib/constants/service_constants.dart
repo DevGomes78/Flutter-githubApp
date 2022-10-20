@@ -9,7 +9,7 @@ class ServiceConstants{
   static const  name ='name';
   static const login = 'login';
   static const bio = 'bio';
-  static const blog = 'blog';
+  static const blog = 'https://www.linkedin...gomes-a16baa213/';
   static const followers = 'followers';
   static const following ='following';
   static const publicRepository='public_repos';
