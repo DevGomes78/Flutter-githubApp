@@ -18,7 +18,6 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-
   RepositoryController controller = RepositoryController();
 
   @override
@@ -43,10 +42,13 @@ class _UserPageState extends State<UserPage> {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
               case ConnectionState.waiting:
-                return Center(
-                    child: Container(
-                  color: Colors.transparent,
-                ),
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  width:  MediaQuery.of(context).size.width,
+                  child: const Center(
+                    child: CircularProgressIndicator(
+                    ),
+                  ),
                 );
               default:
                 if (snapshot.hasError) {
@@ -60,9 +62,7 @@ class _UserPageState extends State<UserPage> {
                       const SizedBox(height: 10),
                       _textPopular(),
                       const SizedBox(height: 15),
-                      providerRepository.list.isEmpty
-                          ?  Center(child: Container())
-                          : _listRepository(providerRepository),
+                          _listRepository(providerRepository,context),
                       const SizedBox(width: 10),
                       _cardInfos(context, snapshot),
                     ],
@@ -97,13 +97,18 @@ _textPopular() {
   );
 }
 
-_listRepository(RepositoryController providerRepository) {
-  return Padding(
-    padding: const EdgeInsets.all(5.0),
+_listRepository(RepositoryController providerRepository,context) {
+  providerRepository.list.isEmpty?
+   SizedBox(
+       height: MediaQuery.of(context).size.height,
+       width:  MediaQuery.of(context).size.width,
+       child: const Center(child: CircularProgressIndicator())):
+  Padding(
+    padding:  const EdgeInsets.all(5.0),
     child: SizedBox(
       height: 160,
       width: double.infinity,
-      child: ListView.builder(
+       child:  ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: providerRepository.list.length,
           itemBuilder: (context, index) {
