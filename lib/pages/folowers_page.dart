@@ -27,14 +27,14 @@ class _FolowersPageState extends State<FolowersPage> {
   appBar: AppBar(
     title: const Text(StringConstants.folower),
   ),
-      body: controller.list.isEmpty
+      body: provider.list.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : Padding(
         padding:  const EdgeInsets.all(5.0),
         child: ListView.builder(
-          itemCount: controller.list.length,
+          itemCount: provider.list.length,
           itemBuilder: (context, index) {
-            var lista = controller.list[index];
+            var lista = provider.list[index];
             return Card(
               child: ListTile(
                 leading: CircleAvatar(
@@ -48,6 +48,4 @@ class _FolowersPageState extends State<FolowersPage> {
       ),
     );
   }
-
-
 }

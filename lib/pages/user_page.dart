@@ -259,7 +259,7 @@ _cardInfos(
                   ),
                   SizedBox(width: 30),
                   Text(
-                    '16',
+                    '17',
                     style: TextStyle(fontSize: 18),
                   ),
                 ],
