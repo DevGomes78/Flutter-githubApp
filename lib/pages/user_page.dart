@@ -195,7 +195,7 @@ _cardInfos(
     child: Card(
       elevation: 5,
       child: SizedBox(
-        height: 200,
+        height: 180,
         width: MediaQuery.of(context).size.width,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
@@ -257,7 +257,7 @@ _cardInfos(
                     StringConstants.ratedAsStar,
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
-                  SizedBox(width: 30),
+                  SizedBox(width: 40),
                   Text(
                     '17',
                     style: TextStyle(fontSize: 18),
