@@ -44,10 +44,9 @@ class _UserPageState extends State<UserPage> {
               case ConnectionState.waiting:
                 return SizedBox(
                   height: MediaQuery.of(context).size.height,
-                  width:  MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width,
                   child: const Center(
-                    child: CircularProgressIndicator(
-                    ),
+                    child: CircularProgressIndicator(),
                   ),
                 );
               default:
@@ -62,7 +61,15 @@ class _UserPageState extends State<UserPage> {
                       const SizedBox(height: 10),
                       _textPopular(),
                       const SizedBox(height: 15),
-                          _listRepository(providerRepository,context),
+                      providerRepository.list.isEmpty
+                          ? SizedBox(
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              child: const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                            )
+                          : _listRepository(providerRepository),
                       const SizedBox(width: 10),
                       _cardInfos(context, snapshot),
                     ],
@@ -97,18 +104,13 @@ _textPopular() {
   );
 }
 
-_listRepository(RepositoryController providerRepository,context) {
-  providerRepository.list.isEmpty?
-   SizedBox(
-       height: MediaQuery.of(context).size.height,
-       width:  MediaQuery.of(context).size.width,
-       child: const Center(child: CircularProgressIndicator())):
-  Padding(
-    padding:  const EdgeInsets.all(5.0),
+_listRepository(RepositoryController providerRepository) {
+  return Padding(
+    padding: const EdgeInsets.all(5.0),
     child: SizedBox(
       height: 160,
       width: double.infinity,
-       child:  ListView.builder(
+      child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: providerRepository.list.length,
           itemBuilder: (context, index) {
