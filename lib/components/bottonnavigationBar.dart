@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 buildBottomNavigationBar() {
   return BottomNavigationBar(
-
-    currentIndex: 2,
+    mouseCursor: SystemMouseCursors.grab,
+    currentIndex:2,
     onTap: (index) {
     },
     selectedItemColor: Colors.blueAccent,
-    unselectedItemColor: Colors.black,
+    unselectedItemColor: Colors.grey,
     items: const [
       BottomNavigationBarItem(
         icon: Icon(Icons.home),
@@ -16,11 +16,6 @@ buildBottomNavigationBar() {
         icon: Icon(Icons.notifications),
         label: ('Notificaçoes'),
       ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.notifications),
-        label: ('Notificaçoes'),
-      ),
-
       BottomNavigationBarItem(
         icon: Icon(Icons.person),
         label: ('Perfil'),
