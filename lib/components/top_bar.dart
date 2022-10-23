@@ -37,9 +37,11 @@ class _TopBarState extends State<TopBar> {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.waiting:
-              return Center(
-                child: Container(
-                  color: Colors.grey,
+              return SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: const Center(
+                  child: CircularProgressIndicator(),
                 ),
               );
             default:
