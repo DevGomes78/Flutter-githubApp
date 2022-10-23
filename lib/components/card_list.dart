@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controller/call_repository.dart';
-import '../controller/repository_controller.dart';
+import '../controller/popupar_repository_controller.dart';
 
 class ListRepository extends StatefulWidget {
   const ListRepository({
@@ -13,11 +13,11 @@ class ListRepository extends StatefulWidget {
 }
 
 class _ListRepositoryState extends State<ListRepository> {
-  RepositoryController controller = RepositoryController();
+  PopularRepositoryController controller = PopularRepositoryController();
 
   @override
   void initState() {
-    controller = context.read<RepositoryController>();
+    controller = context.read<PopularRepositoryController>();
 
     controller.getPopular();
 
@@ -26,7 +26,7 @@ class _ListRepositoryState extends State<ListRepository> {
 
   @override
   Widget build(BuildContext context) {
-    final providerRepository = Provider.of<RepositoryController>(context);
+    final PopularRepositoryController providerRepository = Provider.of<PopularRepositoryController>(context);
     if (providerRepository.list.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     } else {
@@ -80,7 +80,7 @@ class _ListRepositoryState extends State<ListRepository> {
                             ),
                             const SizedBox(height: 5),
                             Text(listRepository.description.toString()),
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 25),
                             Row(
                               children: [
                                 const Icon(Icons.star, color: Colors.yellow),

@@ -3,6 +3,7 @@ import 'package:flutter_github_app/pages/home_page.dart';
 import 'package:flutter_github_app/pages/splash_page.dart';
 import 'package:provider/provider.dart';
 import 'controller/followers_controller.dart';
+import 'controller/popupar_repository_controller.dart';
 import 'controller/repository_controller.dart';
 import 'controller/user_controller.dart';
 
@@ -21,6 +22,7 @@ providers: [
   ChangeNotifierProvider(create: (context)=>UserController()),
   ChangeNotifierProvider(create: (context)=>RepositoryController()),
   ChangeNotifierProvider(create: (context)=>FolowersController()),
+  ChangeNotifierProvider(create: (context)=>PopularRepositoryController()),
 ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
