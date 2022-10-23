@@ -7,14 +7,14 @@ import 'package:provider/provider.dart';
 import '../constants/error_constants.dart';
 import '../controller/user_controller.dart';
 
-class TopBar extends StatefulWidget {
-  const TopBar({Key? key}) : super(key: key);
+class TopCard extends StatefulWidget {
+  const TopCard({Key? key}) : super(key: key);
 
   @override
-  State<TopBar> createState() => _TopBarState();
+  State<TopCard> createState() => _TopCardState();
 }
 
-class _TopBarState extends State<TopBar> {
+class _TopCardState extends State<TopCard> {
   UserController userController = UserController();
 
   @override

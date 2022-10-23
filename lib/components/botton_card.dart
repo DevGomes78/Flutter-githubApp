@@ -6,17 +6,14 @@ import '../constants/string_constants.dart';
 import '../controller/user_controller.dart';
 import '../pages/repository_list_page.dart';
 
-class bottonBar extends StatefulWidget {
-  const bottonBar(
-    BuildContext context, {
-    Key? key,
-  }) : super(key: key);
+class BottonCard extends StatefulWidget {
+
 
   @override
-  State<bottonBar> createState() => _bottonBarState();
+  State<BottonCard> createState() => _BottonCardState();
 }
 
-class _bottonBarState extends State<bottonBar> {
+class _BottonCardState extends State<BottonCard> {
   UserController controller = UserController();
 
   @override
