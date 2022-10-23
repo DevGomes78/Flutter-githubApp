@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_app/constants/service_constants.dart';
-import 'package:flutter_github_app/pages/repository_list_page.dart';
+import '../components/botton_bar.dart';
 import '../components/bottonnavigationBar.dart';
 import '../components/top_bar.dart';
 import 'package:provider/provider.dart';
@@ -59,7 +58,7 @@ class _UserPageState extends State<UserPage> {
                     children: [
                       const TopBar(),
                       const SizedBox(height: 10),
-                      _textPopular(),
+                      _textPopularList(),
                       const SizedBox(height: 15),
                       providerRepository.list.isEmpty
                           ? SizedBox(
@@ -71,7 +70,7 @@ class _UserPageState extends State<UserPage> {
                             )
                           : _listRepository(providerRepository),
                       const SizedBox(width: 10),
-                      bottonBar(context, snapshot),
+                      bottonBar(context),
                     ],
                   );
                 }
@@ -84,7 +83,7 @@ class _UserPageState extends State<UserPage> {
   }
 }
 
-_textPopular() {
+_textPopularList() {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 5),
     child: SizedBox(
@@ -186,88 +185,6 @@ _listRepository(RepositoryController providerRepository) {
   );
 }
 
-bottonBar(
-  BuildContext context,
-  AsyncSnapshot<Map<String, dynamic>> snapshot,
-) {
-  return Padding(
-    padding: const EdgeInsets.all(5.0),
-    child: Card(
-      elevation: 5,
-      child: SizedBox(
-        height: 180,
-        width: MediaQuery.of(context).size.width,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  const Icon(
-                    Icons.receipt,
-                    size: 20,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(width: 20),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const RepositoryList()));
-                    },
-                    child: const Text(
-                      StringConstants.repository,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 150),
-                  Text(
-                      snapshot.data![ServiceConstants.publicRepository]
-                          .toString(),
-                      style: const TextStyle(fontSize: 18)),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                children: const [
-                  Icon(Icons.dataset_outlined, color: Colors.orange),
-                  SizedBox(width: 20),
-                  Text(
-                    StringConstants.organizations,
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  SizedBox(width: 150),
-                  Text(
-                    '0',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                children: const [
-                  Icon(Icons.star, color: Colors.yellow),
-                  SizedBox(width: 15),
-                  Text(
-                    StringConstants.ratedAsStar,
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  SizedBox(width: 40),
-                  Text(
-                    '17',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-}
+
+
+
