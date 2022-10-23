@@ -51,7 +51,7 @@ class _TopBarState extends State<TopBar> {
                 return Card(
                   elevation: 5,
                   child: Container(
-                    height: 270,
+                    height: 300,
                     alignment: Alignment.bottomCenter,
                     width: MediaQuery.of(context).size.width,
                     color: Colors.black26,
@@ -59,7 +59,7 @@ class _TopBarState extends State<TopBar> {
                       children: [
                         Positioned(
                           left: 15,
-                          top: 70,
+                          top: 100,
                           child: CircleAvatar(
                             radius: 35,
                             backgroundImage: NetworkImage(
@@ -69,7 +69,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         Positioned(
                           left: 100,
-                          top: 80,
+                          top: 110,
                           child: Text(
                             provider.decodeJson[ServiceConstants.name],
                             style: const TextStyle(
@@ -80,7 +80,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         Positioned(
                           left: 100,
-                          top: 110,
+                          top: 140,
                           child: Text(
                             provider.decodeJson[ServiceConstants.login],
                             style: const TextStyle(
@@ -91,7 +91,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         Positioned(
                           left: 15,
-                          top: 150,
+                          top: 180,
                           child: Text(
                             provider.decodeJson[ServiceConstants.bio],
                             style: const TextStyle(
@@ -102,7 +102,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         const Positioned(
                           left: 15,
-                          top: 190,
+                          top: 220,
                           child: Icon(
                             Icons.link,
                             color: Colors.grey,
@@ -111,7 +111,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         Positioned(
                           left: 45,
-                          top: 187,
+                          top: 217,
                           child: InkWell(
                             onTap: const CallLinkedin().callLinkedin,
                             child: const Text(
@@ -144,7 +144,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         const Positioned(
                           left: 15,
-                          top: 218,
+                          top: 248,
                           child: Icon(
                             Icons.person_outline_rounded,
                             color: Colors.white54,
@@ -153,7 +153,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         Positioned(
                           left: 45,
-                          top: 220,
+                          top: 250,
                           child: Text(
                             provider.decodeJson[ServiceConstants.followers]
                                 .toString(),
@@ -164,7 +164,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         Positioned(
                           left: 65,
-                          top: 220,
+                          top: 250,
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -183,7 +183,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         Positioned(
                           left: 145,
-                          top: 225,
+                          top: 255,
                           child: Container(
                             height: 10,
                             width: 10,
@@ -195,7 +195,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         Positioned(
                           left: 170,
-                          top: 221,
+                          top: 251,
                           child: Text(
                             provider.decodeJson[ServiceConstants.following]
                                 .toString(),
@@ -203,7 +203,7 @@ class _TopBarState extends State<TopBar> {
                         ),
                         const Positioned(
                           left: 200,
-                          top: 221,
+                          top: 251,
                           child: Text(
                             StringConstants.folowing,
                             style: TextStyle(
