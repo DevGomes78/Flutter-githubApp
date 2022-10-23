@@ -71,7 +71,7 @@ class _UserPageState extends State<UserPage> {
                             )
                           : _listRepository(providerRepository),
                       const SizedBox(width: 10),
-                      _cardInfos(context, snapshot),
+                      bottonBar(context, snapshot),
                     ],
                   );
                 }
@@ -108,7 +108,7 @@ _listRepository(RepositoryController providerRepository) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
     child: SizedBox(
-      height: 160,
+      height: 180,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -120,8 +120,8 @@ _listRepository(RepositoryController providerRepository) {
               child: Card(
                 elevation: 5,
                 child: SizedBox(
-                  height: 200,
-                  width: 260,
+                  height: 230,
+                  width: 280,
                   child: Padding(
                     padding: const EdgeInsets.all(15),
                     child: Column(
@@ -153,7 +153,7 @@ _listRepository(RepositoryController providerRepository) {
                         ),
                         const SizedBox(height: 5),
                         Text(listRepository.description.toString()),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 15),
                         Row(
                           children: [
                             const Icon(Icons.star, color: Colors.yellow),
@@ -186,7 +186,7 @@ _listRepository(RepositoryController providerRepository) {
   );
 }
 
-_cardInfos(
+bottonBar(
   BuildContext context,
   AsyncSnapshot<Map<String, dynamic>> snapshot,
 ) {
