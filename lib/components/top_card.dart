@@ -184,7 +184,7 @@ class _TopCardState extends State<TopCard> {
                           ),
                         ),
                         Positioned(
-                          left: 145,
+                          left: 153,
                           top: 255,
                           child: Container(
                             height: 10,
