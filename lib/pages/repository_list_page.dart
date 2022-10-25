@@ -5,7 +5,8 @@ import '../controller/repository_controller.dart';
 import '../controller/call_repository.dart';
 
 class RepositoryList extends StatefulWidget {
-  const RepositoryList({Key? key}) : super(key: key);
+  String? text;
+  RepositoryList(this.text, {Key? key}) : super(key: key);
 
   @override
   State<RepositoryList> createState() => _RepositoryListState();
@@ -23,7 +24,7 @@ class _RepositoryListState extends State<RepositoryList> {
   loadData() {
     controller= context.read<RepositoryController>();
 
-    controller.getRepository();
+    controller.getRepository(widget.text);
   }
 
   @override
@@ -31,7 +32,7 @@ class _RepositoryListState extends State<RepositoryList> {
     RepositoryController providerRepository = Provider.of<RepositoryController>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Repositorios'),
+        title: const Text('Repositorios'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 1,vertical: 1),

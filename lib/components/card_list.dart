@@ -4,9 +4,8 @@ import '../controller/call_repository.dart';
 import '../controller/popupar_repository_controller.dart';
 
 class ListRepository extends StatefulWidget {
-  const ListRepository({
-    Key? key,
-  }) : super(key: key);
+  String? text;
+  ListRepository(this.text, {Key? key}) : super(key: key);
 
   @override
   State<ListRepository> createState() => _ListRepositoryState();
@@ -19,14 +18,15 @@ class _ListRepositoryState extends State<ListRepository> {
   void initState() {
     controller = context.read<PopularRepositoryController>();
 
-    controller.getPopular();
+    controller.getPopular(widget.text);
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final PopularRepositoryController providerRepository = Provider.of<PopularRepositoryController>(context);
+    final PopularRepositoryController providerRepository =
+        Provider.of<PopularRepositoryController>(context);
     if (providerRepository.list.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     } else {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/constants/service_constants.dart';
+import 'package:flutter_github_app/pages/search_user.dart';
 import 'package:provider/provider.dart';
 import '../constants/error_constants.dart';
 import '../constants/string_constants.dart';
@@ -7,7 +8,8 @@ import '../controller/user_controller.dart';
 import '../pages/repository_list_page.dart';
 
 class BottonCard extends StatefulWidget {
-
+String? text;
+BottonCard(this.text, {Key? key}) : super(key: key);
 
   @override
   State<BottonCard> createState() => _BottonCardState();
@@ -20,7 +22,7 @@ class _BottonCardState extends State<BottonCard> {
   void initState() {
     controller = context.read<UserController>();
 
-    controller.getUser();
+    controller.getUser(widget.text);
 
     super.initState();
   }
@@ -29,7 +31,7 @@ class _BottonCardState extends State<BottonCard> {
   Widget build(BuildContext context) {
     UserController provider = Provider.of<UserController>(context);
     return FutureBuilder<Map<String, dynamic>>(
-        future: UserController().getUser(),
+        future: UserController().getUser(widget.text),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -52,7 +54,7 @@ class _BottonCardState extends State<BottonCard> {
                   child: Card(
                     elevation: 5,
                     child: SizedBox(
-                      height: 180,
+                      height: 200,
                       width: MediaQuery.of(context).size.width,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -74,12 +76,12 @@ class _BottonCardState extends State<BottonCard> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const RepositoryList()));
+                                                RepositoryList(widget.text)));
                                   },
                                   child: const Text(
                                     StringConstants.repository,
                                     style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 10,
                                       color: Colors.white,
                                     ),
                                   ),
@@ -101,7 +103,7 @@ class _BottonCardState extends State<BottonCard> {
                                 Text(
                                   StringConstants.organizations,
                                   style: TextStyle(
-                                      fontSize: 20, color: Colors.white),
+                                      fontSize: 10, color: Colors.white),
                                 ),
                                 SizedBox(width: 150),
                                 Text(
