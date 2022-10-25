@@ -7,9 +7,9 @@ import '../constants/error_constants.dart';
 class UserController extends ChangeNotifier {
   var decodeJson;
 
-  Future<Map<String, dynamic>> getUser() async {
+  Future<Map<String, dynamic>> getUser(String? user) async {
     try {
-      var url = Uri.parse(ServiceConstants.userService);
+      var url = Uri.parse('https://api.github.com/users/$user');
       var response = await http.get(url);
       if (response.statusCode == 200) {
         decodeJson = jsonDecode(response.body);

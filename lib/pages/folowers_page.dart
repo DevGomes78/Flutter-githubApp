@@ -4,7 +4,8 @@ import 'package:flutter_github_app/controller/followers_controller.dart';
 import 'package:provider/provider.dart';
 
 class FolowersPage extends StatefulWidget {
-  const FolowersPage({Key? key}) : super(key: key);
+ String? text;
+ FolowersPage(this.text, {Key? key}) : super(key: key);
 
   @override
   State<FolowersPage> createState() => _FolowersPageState();
@@ -16,7 +17,7 @@ class _FolowersPageState extends State<FolowersPage> {
   @override
   void initState() {
     controller= context.read<FolowersController>();
-    controller.getFolowing();
+    controller.getFolowing(widget.text);
     super.initState();
   }
 

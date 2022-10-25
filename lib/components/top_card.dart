@@ -8,7 +8,8 @@ import '../constants/error_constants.dart';
 import '../controller/user_controller.dart';
 
 class TopCard extends StatefulWidget {
-  const TopCard({Key? key}) : super(key: key);
+  String? text;
+  TopCard(this.text, {Key? key}) : super(key: key);
 
   @override
   State<TopCard> createState() => _TopCardState();
@@ -20,7 +21,7 @@ class _TopCardState extends State<TopCard> {
   @override
   void initState() {
     userController = context.read<UserController>();
-    userController.getUser();
+    userController.getUser(widget.text);
 
     super.initState();
   }
@@ -32,7 +33,7 @@ class _TopCardState extends State<TopCard> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: FutureBuilder<Map<String, dynamic>>(
-        future: UserController().getUser(),
+        future: UserController().getUser(widget.text),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -173,7 +174,7 @@ class _TopCardState extends State<TopCard> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const FolowersPage()));
+                                           FolowersPage(widget.text)));
                             },
                             child: const Text(
                               (StringConstants.folower),

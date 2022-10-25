@@ -5,7 +5,9 @@ import '../components/bottonnavigationBar.dart';
 import '../components/card_list.dart';
 import '../components/top_card.dart';
 class UserPage extends StatefulWidget {
-  const UserPage({Key? key}) : super(key: key);
+  String? text;
+   UserPage({Key? key,this.text}) : super(key: key);
+
 
   @override
   State<UserPage> createState() => _UserPageState();
@@ -18,13 +20,13 @@ class _UserPageState extends State<UserPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const TopCard(),
+            TopCard(widget.text),
             const SizedBox(height: 10),
             const popularTextList(),
             const SizedBox(height: 15),
-            const ListRepository(),
+             ListRepository(widget.text),
             const SizedBox(width: 10),
-            BottonCard(),
+            BottonCard(widget.text),
           ],
         ),
       ),
