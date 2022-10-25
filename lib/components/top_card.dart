@@ -3,7 +3,6 @@ import 'package:flutter_github_app/constants/service_constants.dart';
 import 'package:flutter_github_app/constants/string_constants.dart';
 import 'package:flutter_github_app/controller/call_linkedin.dart';
 import 'package:flutter_github_app/pages/folowers_page.dart';
-import 'package:flutter_github_app/pages/search_user.dart';
 import 'package:provider/provider.dart';
 import '../constants/error_constants.dart';
 import '../controller/user_controller.dart';
