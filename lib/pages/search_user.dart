@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_github_app/constants/string_constants.dart';
 import 'package:flutter_github_app/pages/user_page.dart';
 import 'package:provider/provider.dart';
-
+import '../constants/service_constants.dart';
 import '../controller/user_controller.dart';
 
 class SearchUser extends StatefulWidget {
@@ -24,13 +25,13 @@ class _SearchUserState extends State<SearchUser> {
             children: [
               const SizedBox(height: 150),
               Image.asset(
-                'image/git.png',
+                ServiceConstants.imageAsset,
                 color: Colors.white,
                 height: 180,
               ),
               const SizedBox(height: 150),
               const Text(
-                'Digite o usuario Github',
+                StringConstants.enterGithubUser,
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -39,8 +40,8 @@ class _SearchUserState extends State<SearchUser> {
               TextField(
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                    labelText: 'nome',
-                    hintText: 'Digite o nome',
+                    labelText: StringConstants.name,
+                    hintText: StringConstants.enterUser,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     )),
@@ -54,8 +55,8 @@ class _SearchUserState extends State<SearchUser> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => UserPage(
-                            text: textControler.text,
-                          )));
+                                text: textControler.text,
+                              )));
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -64,7 +65,7 @@ class _SearchUserState extends State<SearchUser> {
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.blue,
                   ),
-                  child: const Text('Procurar'),
+                  child: const Text(StringConstants.search),
                 ),
               ),
             ],

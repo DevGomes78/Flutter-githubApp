@@ -11,5 +11,9 @@ class StringConstants{
   static const folowing = 'Seguindo';
   static const waiting='Carregando...';
   static const holdUp='aguarde...';
+  static const enterGithubUser ='Digite o usuário Github';
+  static const name = 'Nome';
+  static const enterUser = 'Digite o usuario';
+  static const search = 'Pesquisar';
 
 }

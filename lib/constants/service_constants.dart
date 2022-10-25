@@ -13,4 +13,5 @@ class ServiceConstants{
   static const followers = 'followers';
   static const following ='following';
   static const publicRepository='public_repos';
+  static const imageAsset = 'image/git.png';
 }
