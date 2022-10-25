@@ -175,7 +175,7 @@ class _TopCardState extends State<TopCard> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const FolowersPage()));
+                                           FolowersPage(widget.text)));
                             },
                             child: const Text(
                               (StringConstants.folower),

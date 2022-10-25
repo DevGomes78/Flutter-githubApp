@@ -8,9 +8,9 @@ import '../models/folowers_models.dart';
 class FolowersController extends ChangeNotifier {
   List<folowersModels> list = [];
 
-  Future<List<folowersModels>> getFolowing() async {
+  Future<List<folowersModels>> getFolowing(String? user) async {
     try {
-      var url = Uri.parse(ServiceConstants.folowersService);
+      var url = Uri.parse('https://api.github.com/users/$user/followers');
       var response = await http.get(url);
       if (response.statusCode == 200) {
         var decodeJson = jsonDecode(response.body);
