@@ -31,7 +31,7 @@ class _TopCardState extends State<TopCard> {
     UserController provider = Provider.of<UserController>(context);
 
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(2.0),
       child: FutureBuilder<Map<String, dynamic>>(
         future: UserController().getUser(widget.text),
         builder: (context, snapshot) {
@@ -117,9 +117,9 @@ class _TopCardState extends State<TopCard> {
                           top: 217,
                           child: InkWell(
                             onTap: const CallLinkedin().callLinkedin,
-                            child: const Text(
-                              ServiceConstants.blog,
-                              style: TextStyle(
+                            child:  Text(
+                              provider.decodeJson[ServiceConstants.blog],
+                              style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,
