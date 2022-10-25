@@ -22,7 +22,7 @@ class _UserPageState extends State<UserPage> {
           children: [
             TopCard(widget.text),
             const SizedBox(height: 10),
-            const popularTextList(),
+            const PopularTextList(),
             const SizedBox(height: 15),
              ListRepository(widget.text),
             const SizedBox(width: 10),

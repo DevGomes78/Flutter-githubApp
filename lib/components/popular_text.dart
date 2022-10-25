@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../constants/string_constants.dart';
 
-class popularTextList extends StatelessWidget {
-  const popularTextList({
+class PopularTextList extends StatelessWidget {
+  const PopularTextList({
     Key? key,
   }) : super(key: key);
 

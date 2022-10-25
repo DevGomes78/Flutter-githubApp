@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/constants/service_constants.dart';
-import 'package:flutter_github_app/pages/search_user.dart';
 import 'package:provider/provider.dart';
 import '../constants/error_constants.dart';
 import '../constants/string_constants.dart';
@@ -81,7 +80,7 @@ class _BottonCardState extends State<BottonCard> {
                                   child: const Text(
                                     StringConstants.repository,
                                     style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 20,
                                       color: Colors.white,
                                     ),
                                   ),
@@ -103,7 +102,7 @@ class _BottonCardState extends State<BottonCard> {
                                 Text(
                                   StringConstants.organizations,
                                   style: TextStyle(
-                                      fontSize: 10, color: Colors.white),
+                                      fontSize: 20, color: Colors.white),
                                 ),
                                 SizedBox(width: 150),
                                 Text(
