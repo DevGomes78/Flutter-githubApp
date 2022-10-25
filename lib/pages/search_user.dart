@@ -16,44 +16,59 @@ class _SearchUserState extends State<SearchUser> {
     UserController provider = Provider.of<UserController>(context);
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TextField(
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                  labelText: 'nome',
-                  hintText: 'Digite o nome',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  )),
-              controller: textControler,
-            ),
-            const SizedBox(height: 10),
-            InkWell(
-              onTap: () {
-                provider.getUser(textControler.text);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => UserPage(
-                              text: textControler.text,
-                            )));
-              },
-              child: Container(
-                alignment: Alignment.center,
-                height: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.blue,
-                ),
-                child: const Text('Procurar'),
+      backgroundColor: Colors.black,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 150),
+              Image.asset(
+                'image/git.png',
+                color: Colors.white,
+                height: 180,
               ),
-            ),
-          ],
+              const SizedBox(height: 150),
+              const Text(
+                'Digite o usuario Github',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                    labelText: 'nome',
+                    hintText: 'Digite o nome',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )),
+                controller: textControler,
+              ),
+              const SizedBox(height: 10),
+              InkWell(
+                onTap: () {
+                  provider.getUser(textControler.text);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserPage(
+                            text: textControler.text,
+                          )));
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 55,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.blue,
+                  ),
+                  child: const Text('Procurar'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
