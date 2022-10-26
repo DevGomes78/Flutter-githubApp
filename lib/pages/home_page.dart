@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_app/pages/search_user.dart';
+import 'package:flutter_github_app/pages/search_user_page.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: SearchUser(),
+      body: SearchUserPage(),
     );
   }
 }

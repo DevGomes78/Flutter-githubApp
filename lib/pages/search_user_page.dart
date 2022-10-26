@@ -5,12 +5,12 @@ import 'package:provider/provider.dart';
 import '../constants/service_constants.dart';
 import '../controller/user_controller.dart';
 
-class SearchUser extends StatefulWidget {
+class SearchUserPage extends StatefulWidget {
   @override
-  State<SearchUser> createState() => _SearchUserState();
+  State<SearchUserPage> createState() => _SearchUserPageState();
 }
 
-class _SearchUserState extends State<SearchUser> {
+class _SearchUserPageState extends State<SearchUserPage> {
   TextEditingController textControler = TextEditingController();
 
   Widget build(BuildContext context) {
@@ -18,11 +18,11 @@ class _SearchUserState extends State<SearchUser> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: buildSingleChildScrollView(provider, context),
+      body: _searchUser(provider, context),
     );
   }
 
-  SingleChildScrollView buildSingleChildScrollView(
+  _searchUser(
     UserController provider,
     BuildContext context,
   ) {
