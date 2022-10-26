@@ -4,8 +4,9 @@ import 'package:flutter_github_app/controller/followers_controller.dart';
 import 'package:provider/provider.dart';
 
 class FolowersPage extends StatefulWidget {
- String? text;
- FolowersPage(this.text, {Key? key}) : super(key: key);
+  String? text;
+
+  FolowersPage(this.text, {Key? key}) : super(key: key);
 
   @override
   State<FolowersPage> createState() => _FolowersPageState();
@@ -16,7 +17,7 @@ class _FolowersPageState extends State<FolowersPage> {
 
   @override
   void initState() {
-    controller= context.read<FolowersController>();
+    controller = context.read<FolowersController>();
     controller.getFolowing(widget.text);
     super.initState();
   }
@@ -25,27 +26,31 @@ class _FolowersPageState extends State<FolowersPage> {
   Widget build(BuildContext context) {
     FolowersController provider = Provider.of<FolowersController>(context);
     return Scaffold(
-  appBar: AppBar(
-    title: const Text(StringConstants.folower),
-  ),
+      appBar: AppBar(
+        title: const Text(StringConstants.folower),
+      ),
       body: provider.list.isEmpty
           ? const Center(child: CircularProgressIndicator())
-          : Padding(
-        padding:  const EdgeInsets.all(5.0),
-        child: ListView.builder(
-          itemCount: provider.list.length,
-          itemBuilder: (context, index) {
-            var lista = provider.list[index];
-            return Card(
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(lista.avatarUrl.toString()),
-                ),
-                title: Text(lista.login.toString()),
+          : _folowersList(provider),
+    );
+  }
+
+  _folowersList(FolowersController provider) {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: ListView.builder(
+        itemCount: provider.list.length,
+        itemBuilder: (context, index) {
+          var lista = provider.list[index];
+          return Card(
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(lista.avatarUrl.toString()),
               ),
-            );
-          },
-        ),
+              title: Text(lista.login.toString()),
+            ),
+          );
+        },
       ),
     );
   }
