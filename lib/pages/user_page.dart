@@ -17,19 +17,18 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black26,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              TopCard(widget.text),
-              const SizedBox(height: 10),
-              const PopularTextList(),
-              const SizedBox(height: 15),
-               ListRepository(widget.text),
-              const SizedBox(width: 10),
-              BottonCard(widget.text),
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            TopCard(widget.text),
+            const SizedBox(height: 10),
+            const PopularTextList(),
+            const SizedBox(height: 10),
+             ListRepository(widget.text),
+            const SizedBox(width: 10),
+            BottonCard(widget.text),
+          ],
         ),
       ),
       bottomNavigationBar: buildBottomNavigationBar(),

@@ -18,58 +18,65 @@ class _SearchUserState extends State<SearchUser> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 150),
-              Image.asset(
-                ServiceConstants.imageAsset,
-                color: Colors.white,
-                height: 180,
+      body: buildSingleChildScrollView(provider, context),
+    );
+  }
+
+  SingleChildScrollView buildSingleChildScrollView(
+    UserController provider,
+    BuildContext context,
+  ) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            const SizedBox(height: 150),
+            Image.asset(
+              ServiceConstants.imageAsset,
+              color: Colors.white,
+              height: 180,
+            ),
+            const SizedBox(height: 150),
+            const Text(
+              StringConstants.enterGithubUser,
+              style: TextStyle(
+                fontSize: 20,
               ),
-              const SizedBox(height: 150),
-              const Text(
-                StringConstants.enterGithubUser,
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextField(
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    labelText: StringConstants.name,
-                    hintText: StringConstants.enterUser,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    )),
-                controller: textControler,
-              ),
-              const SizedBox(height: 10),
-              InkWell(
-                onTap: () {
-                  provider.getUser(textControler.text);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UserPage(
-                                text: textControler.text,
-                              )));
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 55,
-                  decoration: BoxDecoration(
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                  labelText: StringConstants.user,
+                  hintText: StringConstants.enterUser,
+                  border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.blue,
-                  ),
-                  child: const Text(StringConstants.search),
+                  )),
+              controller: textControler,
+            ),
+            const SizedBox(height: 10),
+            InkWell(
+              onTap: () {
+                provider.getUser(textControler.text);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => UserPage(
+                              text: textControler.text,
+                            )));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 55,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.blue,
                 ),
+                child: const Text(StringConstants.search),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

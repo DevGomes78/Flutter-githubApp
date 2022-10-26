@@ -120,7 +120,7 @@ class _TopCardState extends State<TopCard> {
                             child:  Text(
                               provider.decodeJson[ServiceConstants.blog],
                               style: const TextStyle(
-                                fontSize: 16,
+                                fontSize: 12,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,
                               ),

@@ -12,7 +12,7 @@ class StringConstants{
   static const waiting='Carregando...';
   static const holdUp='aguarde...';
   static const enterGithubUser ='Digite o usuário Github';
-  static const name = 'Nome';
+  static const user = 'Usuario';
   static const enterUser = 'Digite o usuario';
   static const search = 'Pesquisar';
 

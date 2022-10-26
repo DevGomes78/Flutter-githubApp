@@ -53,7 +53,7 @@ class _BottonCardState extends State<BottonCard> {
                   child: Card(
                     elevation: 5,
                     child: SizedBox(
-                      height: 170,
+                      height: 165,
                       width: MediaQuery.of(context).size.width,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
