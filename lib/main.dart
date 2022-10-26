@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_github_app/pages/home_page.dart';
 import 'package:flutter_github_app/pages/splash_page.dart';
 import 'package:provider/provider.dart';
 import 'controller/followers_controller.dart';
@@ -30,7 +29,7 @@ providers: [
           primarySwatch: Colors.blue,
           brightness: Brightness.dark
         ),
-        home: const SplashScreen(),
+        home: const SplashPage(),
       ),
     );
   }
