@@ -28,11 +28,11 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: _buildCenter(),
+      body: _buildSpalsh(),
     );
   }
 
-  _buildCenter() {
+  _buildSpalsh() {
     return Container(
       decoration: const BoxDecoration(
        color: Colors.black,
