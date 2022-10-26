@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants/service_constants.dart';
 import '../constants/string_constants.dart';
 import 'home_page.dart';
 
@@ -27,11 +28,11 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: buildCenter(),
+      body: _buildCenter(),
     );
   }
 
-  Container buildCenter() {
+  _buildCenter() {
     return Container(
       decoration: const BoxDecoration(
        color: Colors.black,
@@ -44,7 +45,7 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               const SizedBox(height: 70),
               Image.asset(
-                'image/git.png',
+                ServiceConstants.imageAsset,
                 color: Colors.white,
                 height: 180,
               ),

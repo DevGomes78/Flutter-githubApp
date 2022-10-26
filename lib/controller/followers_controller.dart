@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_github_app/constants/service_constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import '../constants/error_constants.dart';
