@@ -75,7 +75,7 @@ class _BottonCardState extends State<BottonCard> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                RepositoryList(widget.text)));
+                                                RepositoryListPage(widget.text)));
                                   },
                                   child: const Text(
                                     StringConstants.repository,

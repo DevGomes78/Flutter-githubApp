@@ -5,16 +5,16 @@ import '../constants/string_constants.dart';
 import '../controller/repository_controller.dart';
 import '../controller/call_repository.dart';
 
-class RepositoryList extends StatefulWidget {
+class RepositoryListPage extends StatefulWidget {
   String? text;
 
-  RepositoryList(this.text, {Key? key}) : super(key: key);
+  RepositoryListPage(this.text, {Key? key}) : super(key: key);
 
   @override
-  State<RepositoryList> createState() => _RepositoryListState();
+  State<RepositoryListPage> createState() => _RepositoryListPageState();
 }
 
-class _RepositoryListState extends State<RepositoryList> {
+class _RepositoryListPageState extends State<RepositoryListPage> {
   RepositoryController controller = RepositoryController();
 
   @override
@@ -39,11 +39,11 @@ class _RepositoryListState extends State<RepositoryList> {
       ),
       body: providerRepository.list.isEmpty
           ? const Center(child: CircularProgressIndicator())
-          : _listRepository(providerRepository),
+          : _repositoryList(providerRepository),
     );
   }
 
-  _listRepository(RepositoryController providerRepository) {
+  _repositoryList(RepositoryController providerRepository) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 1),
       child: ListView.builder(
