@@ -182,7 +182,8 @@ class _TopCardState extends State<TopCard> {
                 child: const Text(
                   (StringConstants.folower),
                   style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ),
