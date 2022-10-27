@@ -23,18 +23,15 @@ class _TopCardState extends State<TopCard> {
   void initState() {
     userController = context.read<UserController>();
     userController.getUser(widget.text);
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    UserController provider = Provider.of<UserController>(context);
-
     return Padding(
       padding: const EdgeInsets.all(2.0),
       child: FutureBuilder<Map<String, dynamic>>(
-        future: UserController().getUser(widget.text),
+        future: userController.getUser(widget.text),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -52,7 +49,7 @@ class _TopCardState extends State<TopCard> {
                   child: Text(ErrorConstants.errorPage),
                 );
               } else {
-                return _topCard(context, provider);
+                return _topCard(context);
               }
           }
         },
@@ -60,7 +57,7 @@ class _TopCardState extends State<TopCard> {
     );
   }
 
-  _topCard(BuildContext context, UserController provider) {
+  _topCard(BuildContext context) {
     return Card(
       elevation: 5,
       child: Container(
@@ -76,7 +73,7 @@ class _TopCardState extends State<TopCard> {
               child: CircleAvatar(
                 radius: 35,
                 backgroundImage: NetworkImage(
-                  provider.decodeJson[ServiceConstants.avatarUrl],
+                  userController.decodeJson[ServiceConstants.avatarUrl],
                 ),
               ),
             ),
@@ -84,7 +81,7 @@ class _TopCardState extends State<TopCard> {
               left: 100,
               top: 110,
               child: Text(
-                provider.decodeJson[ServiceConstants.name],
+                userController.decodeJson[ServiceConstants.name],
                 style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -95,7 +92,7 @@ class _TopCardState extends State<TopCard> {
               left: 100,
               top: 140,
               child: Text(
-                provider.decodeJson[ServiceConstants.login],
+                userController.decodeJson[ServiceConstants.login],
                 style: const TextStyle(
                   fontSize: 18,
                   color: Colors.white54,
@@ -106,7 +103,7 @@ class _TopCardState extends State<TopCard> {
               left: 15,
               top: 180,
               child: Text(
-                provider.decodeJson[ServiceConstants.bio],
+                userController.decodeJson[ServiceConstants.bio],
                 style: const TextStyle(
                   fontSize: 20,
                   color: Colors.white,
@@ -128,7 +125,7 @@ class _TopCardState extends State<TopCard> {
               child: InkWell(
                 onTap: const CallLinkedin().callLinkedin,
                 child: Text(
-                  provider.decodeJson[ServiceConstants.blog],
+                  userController.decodeJson[ServiceConstants.blog],
                   style: const TextStyle(
                     fontSize: 12,
                     color: Colors.white,
@@ -166,7 +163,7 @@ class _TopCardState extends State<TopCard> {
               left: 45,
               top: 250,
               child: Text(
-                provider.decodeJson[ServiceConstants.followers].toString(),
+                userController.decodeJson[ServiceConstants.followers].toString(),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
@@ -205,7 +202,7 @@ class _TopCardState extends State<TopCard> {
               left: 170,
               top: 251,
               child: Text(
-                provider.decodeJson[ServiceConstants.following].toString(),
+                userController.decodeJson[ServiceConstants.following].toString(),
               ),
             ),
             const Positioned(

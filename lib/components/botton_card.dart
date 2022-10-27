@@ -21,17 +21,14 @@ class _BottonCardState extends State<BottonCard> {
   @override
   void initState() {
     controller = context.read<UserController>();
-
     controller.getUser(widget.text);
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    UserController provider = Provider.of<UserController>(context);
     return FutureBuilder<Map<String, dynamic>>(
-        future: UserController().getUser(widget.text),
+        future: controller.getUser(widget.text),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -49,13 +46,13 @@ class _BottonCardState extends State<BottonCard> {
                   child: Text(ErrorConstants.errorPage),
                 );
               } else {
-                return _bottonCard(context, provider);
+                return _bottonCard(context);
               }
           }
         });
   }
 
-  _bottonCard(BuildContext context, UserController provider) {
+  _bottonCard(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Card(
@@ -94,7 +91,7 @@ class _BottonCardState extends State<BottonCard> {
                     ),
                     const SizedBox(width: 150),
                     Text(
-                        provider.decodeJson[ServiceConstants.publicRepository]
+                        controller.decodeJson[ServiceConstants.publicRepository]
                             .toString(),
                         style: const TextStyle(fontSize: 18)),
                   ],
