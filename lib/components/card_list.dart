@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controller/call_repository.dart';
-import '../controller/popupar_repository_controller.dart';
+import '../controller/repository_controller.dart';
 
 class ListRepository extends StatefulWidget {
   String? text;
@@ -13,28 +13,31 @@ class ListRepository extends StatefulWidget {
 }
 
 class _ListRepositoryState extends State<ListRepository> {
-  PopularRepositoryController controller = PopularRepositoryController();
+  RepositoryController controller = RepositoryController();
 
   @override
   void initState() {
-    controller = context.read<PopularRepositoryController>();
-
-    controller.getPopular(widget.text);
-
+    loadData();
     super.initState();
+  }
+
+  loadData() {
+    controller = context.read<RepositoryController>();
+
+    controller.getRepository(widget.text);
   }
 
   @override
   Widget build(BuildContext context) {
-    final  providerRepository = Provider.of<PopularRepositoryController>(context);
-    if (providerRepository.list.isEmpty) {
+    final provider =  Provider.of<RepositoryController>(context);
+    if (provider.lista.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     } else {
-      return _repositoryList(providerRepository);
+      return _repositoryList(provider);
     }
   }
 
-  _repositoryList(PopularRepositoryController providerRepository) {
+  _repositoryList(provider) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: SizedBox(
@@ -42,9 +45,9 @@ class _ListRepositoryState extends State<ListRepository> {
         width: double.infinity,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: providerRepository.list.length,
+            itemCount: provider.lista.length,
             itemBuilder: (context, index) {
-              var listRepository = providerRepository.list[index];
+              var listRepository = provider.lista[index];
               return InkWell(
                 onTap:
                     CallRepository(repositoyModels: listRepository).callGithub,
