@@ -23,7 +23,6 @@ class _ListRepositoryState extends State<ListRepository> {
 
   loadData() {
     controller = context.read<RepositoryController>();
-
     controller.getRepository(widget.text);
   }
 

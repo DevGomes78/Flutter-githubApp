@@ -24,7 +24,7 @@ class _FolowersPageState extends State<FolowersPage> {
 
   @override
   Widget build(BuildContext context) {
-    FolowersController provider = Provider.of<FolowersController>(context);
+    final provider = Provider.of<FolowersController>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(StringConstants.folower),
