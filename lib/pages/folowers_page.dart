@@ -24,7 +24,7 @@ class _FolowersPageState extends State<FolowersPage> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<FolowersController>(context);
+   final provider = Provider.of<FolowersController>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(StringConstants.folower),
@@ -35,7 +35,7 @@ class _FolowersPageState extends State<FolowersPage> {
     );
   }
 
-  _folowersList(FolowersController provider) {
+  _folowersList(provider) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ListView.builder(

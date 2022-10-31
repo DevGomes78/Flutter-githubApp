@@ -31,25 +31,25 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
 
   @override
   Widget build(BuildContext context) {
-    RepositoryController providerRepository =
-        Provider.of<RepositoryController>(context);
+   final provider =  Provider.of<RepositoryController>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(StringConstants.repository),
       ),
-      body: providerRepository.list.isEmpty
+      body: provider.list.isEmpty
           ? const Center(child: CircularProgressIndicator())
-          : _repositoryList(providerRepository),
+          : _repositoryList(provider),
     );
   }
 
-  _repositoryList(RepositoryController providerRepository) {
+  _repositoryList(provider) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 1),
       child: ListView.builder(
-          itemCount: providerRepository.list.length,
+          itemCount: provider.list.length,
           itemBuilder: (context, index) {
-            var listRepository = providerRepository.list[index];
+            var listRepository = provider.list[index];
             return InkWell(
               onTap: CallRepository(repositoyModels: listRepository).callGithub,
               child: Card(
