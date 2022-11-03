@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/constants/string_constants.dart';
+import 'package:flutter_github_app/pages/error_page.dart';
 import 'package:flutter_github_app/pages/user_page.dart';
 import 'package:provider/provider.dart';
 import '../constants/service_constants.dart';
@@ -63,14 +64,22 @@ class _SearchUserPageState extends State<SearchUserPage> {
                       content: Text('Campo usuario em branco!'),
                     ),
                   );
-                } else if (textControler.text.isNotEmpty) {
+                }  if (textControler.text.isNotEmpty) {
+                  provider.getUser(context, textControler.text);
+                  print(provider.decodeJson);
+                }
+                if (provider.decodeJson == null) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          UserPage(
-                            text: textControler.text,
-                          ),
+                      builder: (context) => ErrorPage(),
+                    ),
+                  );
+                }else{
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UserPage(text: textControler.text),
                     ),
                   );
                 }
