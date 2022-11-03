@@ -6,13 +6,21 @@ import '../constants/error_constants.dart';
 class UserController extends ChangeNotifier {
   var decodeJson;
 
-  Future<Map<String, dynamic>> getUser(String? user) async {
+  Future<Map<String, dynamic>> getUser(context,String user) async {
     try {
-      var url = Uri.parse('https://api.github.com/users/$user');
-      var response = await http.get(url);
-      if (response.statusCode == 200) {
-        decodeJson = jsonDecode(response.body);
-        notifyListeners();
+      if (user.isNotEmpty) {
+        var url = Uri.parse('https://api.github.com/users/$user');
+        var response = await http.get(url);
+        if (response.statusCode == 200) {
+          decodeJson = jsonDecode(response.body);
+          notifyListeners();
+        }
+      }else{
+        ScaffoldMessenger.of(context).showSnackBar(
+           const SnackBar(
+            content: Text(ErrorConstants.userNotregister)
+          ),
+        );
       }
     } catch (e) {
       print('${ErrorConstants.erroAoAcessarPagina}$e');

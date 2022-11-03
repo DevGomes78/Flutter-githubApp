@@ -4,10 +4,11 @@ import '../components/botton_card.dart';
 import '../components/bottonnavigationBar.dart';
 import '../components/card_list.dart';
 import '../components/top_card.dart';
-class UserPage extends StatefulWidget {
-  String? text;
-   UserPage({Key? key,this.text}) : super(key: key);
 
+class UserPage extends StatefulWidget {
+  String text;
+
+  UserPage({Key? key, required this.text}) : super(key: key);
 
   @override
   State<UserPage> createState() => _UserPageState();
@@ -25,7 +26,7 @@ class _UserPageState extends State<UserPage> {
             const SizedBox(height: 10),
             const PopularTextList(),
             const SizedBox(height: 10),
-             ListRepository(widget.text),
+            ListRepository(widget.text),
             const SizedBox(width: 10),
             BottonCard(widget.text),
           ],
@@ -35,6 +36,3 @@ class _UserPageState extends State<UserPage> {
     );
   }
 }
-
-
-

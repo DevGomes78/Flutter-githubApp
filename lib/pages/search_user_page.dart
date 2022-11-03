@@ -15,7 +15,6 @@ class _SearchUserPageState extends State<SearchUserPage> {
 
   Widget build(BuildContext context) {
     UserController provider = Provider.of<UserController>(context);
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: _searchUser(provider, context),
@@ -58,13 +57,23 @@ class _SearchUserPageState extends State<SearchUserPage> {
             const SizedBox(height: 10),
             InkWell(
               onTap: () {
-                provider.getUser(textControler.text);
-                Navigator.push(
+                if (textControler.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Campo usuario em branco!'),
+                    ),
+                  );
+                } else if (textControler.text.isNotEmpty) {
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => UserPage(
-                              text: textControler.text,
-                            )));
+                      builder: (context) =>
+                          UserPage(
+                            text: textControler.text,
+                          ),
+                    ),
+                  );
+                }
               },
               child: Container(
                 alignment: Alignment.center,

@@ -8,7 +8,7 @@ import '../constants/error_constants.dart';
 import '../controller/user_controller.dart';
 
 class TopCard extends StatefulWidget {
-  String? text;
+  String text;
 
   TopCard(this.text, {Key? key}) : super(key: key);
 
@@ -22,7 +22,7 @@ class _TopCardState extends State<TopCard> {
   @override
   void initState() {
     userController = context.read<UserController>();
-    userController.getUser(widget.text);
+    userController.getUser(context,widget.text);
     super.initState();
   }
 
@@ -31,7 +31,7 @@ class _TopCardState extends State<TopCard> {
     return Padding(
       padding: const EdgeInsets.all(2.0),
       child: FutureBuilder<Map<String, dynamic>>(
-        future: userController.getUser(widget.text),
+        future: userController.getUser(context,widget.text),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -45,9 +45,14 @@ class _TopCardState extends State<TopCard> {
               );
             default:
               if (snapshot.hasError) {
-                return const Center(
-                  child: Text(ErrorConstants.errorPage),
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: const Center(
+                    child: Text(ErrorConstants.userNotregister),
+                  ),
                 );
+
               } else {
                 return _topCard(context);
               }

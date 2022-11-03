@@ -7,7 +7,7 @@ import '../controller/user_controller.dart';
 import '../pages/repository_list_page.dart';
 
 class BottonCard extends StatefulWidget {
-  String? text;
+  String text;
 
   BottonCard(this.text, {Key? key}) : super(key: key);
 
@@ -21,14 +21,14 @@ class _BottonCardState extends State<BottonCard> {
   @override
   void initState() {
     controller = context.read<UserController>();
-    controller.getUser(widget.text);
+    controller.getUser(context,widget.text);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Map<String, dynamic>>(
-        future: controller.getUser(widget.text),
+        future: controller.getUser(context,widget.text),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
