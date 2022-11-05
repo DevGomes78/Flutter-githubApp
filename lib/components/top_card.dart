@@ -22,7 +22,7 @@ class _TopCardState extends State<TopCard> {
   @override
   void initState() {
     userController = context.read<UserController>();
-    userController.getUser(context,widget.text);
+    userController.getUser(context, widget.text);
     super.initState();
   }
 
@@ -30,8 +30,8 @@ class _TopCardState extends State<TopCard> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(2.0),
-      child: FutureBuilder<Map<String, dynamic>>(
-        future: userController.getUser(context,widget.text),
+      child: FutureBuilder<Map<String, dynamic>?>(
+        future: userController.getUser(context, widget.text),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -168,7 +168,8 @@ class _TopCardState extends State<TopCard> {
               left: 45,
               top: 250,
               child: Text(
-                userController.decodeJson[ServiceConstants.followers].toString(),
+                userController.decodeJson[ServiceConstants.followers]
+                    .toString(),
                 style: const TextStyle(
                   color: Colors.white,
                 ),
@@ -187,8 +188,7 @@ class _TopCardState extends State<TopCard> {
                 child: const Text(
                   (StringConstants.folower),
                   style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
+                      color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -208,7 +208,8 @@ class _TopCardState extends State<TopCard> {
               left: 170,
               top: 251,
               child: Text(
-                userController.decodeJson[ServiceConstants.following].toString(),
+                userController.decodeJson[ServiceConstants.following]
+                    .toString(),
               ),
             ),
             const Positioned(

@@ -23,9 +23,9 @@ class _SearchUserPageState extends State<SearchUserPage> {
   }
 
   _searchUser(
-    UserController provider,
-    BuildContext context,
-  ) {
+      UserController provider,
+      BuildContext context,
+      ) {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -62,17 +62,6 @@ class _SearchUserPageState extends State<SearchUserPage> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Campo usuario em branco!'),
-                    ),
-                  );
-                }  if (textControler.text.isNotEmpty) {
-                  provider.getUser(context, textControler.text);
-                  print(provider.decodeJson);
-                }
-                if (provider.decodeJson == null) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ErrorPage(),
                     ),
                   );
                 }else{
