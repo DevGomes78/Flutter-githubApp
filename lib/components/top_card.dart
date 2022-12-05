@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/constants/service_constants.dart';
 import 'package:flutter_github_app/constants/string_constants.dart';
-import 'package:flutter_github_app/controller/call_linkedin.dart';
+import 'package:flutter_github_app/controller/call_linkedin_controller.dart';
 import 'package:flutter_github_app/pages/folowers_page.dart';
 import 'package:provider/provider.dart';
 import '../constants/error_constants.dart';
-import '../controller/user_controller.dart';
+import '../service/user_service.dart';
 
 class TopCard extends StatefulWidget {
   String text;

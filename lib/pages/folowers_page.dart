@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/constants/string_constants.dart';
-import 'package:flutter_github_app/controller/followers_controller.dart';
+import 'package:flutter_github_app/service/followers_service.dart';
 import 'package:provider/provider.dart';
 
 class FolowersPage extends StatefulWidget {

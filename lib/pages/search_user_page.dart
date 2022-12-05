@@ -4,7 +4,7 @@ import 'package:flutter_github_app/pages/error_page.dart';
 import 'package:flutter_github_app/pages/user_page.dart';
 import 'package:provider/provider.dart';
 import '../constants/service_constants.dart';
-import '../controller/user_controller.dart';
+import '../service/user_service.dart';
 
 class SearchUserPage extends StatefulWidget {
   @override

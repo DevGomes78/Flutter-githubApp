@@ -3,7 +3,7 @@ import 'package:flutter_github_app/constants/service_constants.dart';
 import 'package:provider/provider.dart';
 import '../constants/error_constants.dart';
 import '../constants/string_constants.dart';
-import '../controller/user_controller.dart';
+import '../service/user_service.dart';
 import '../pages/repository_list_page.dart';
 
 class BottonCard extends StatefulWidget {

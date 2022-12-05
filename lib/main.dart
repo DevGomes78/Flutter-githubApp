@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_github_app/pages/splash_page.dart';
 import 'package:provider/provider.dart';
-import 'controller/followers_controller.dart';
-import 'controller/repository_controller.dart';
-import 'controller/user_controller.dart';
+import 'service/followers_service.dart';
+import 'service/repository_service.dart';
+import 'service/user_service.dart';
 
 void main() {
   runApp(const MyApp());

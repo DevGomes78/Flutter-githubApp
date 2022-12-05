@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../constants/string_constants.dart';
-import '../controller/repository_controller.dart';
-import '../controller/call_repository.dart';
+import '../service/repository_service.dart';
+import '../controller/call_repository_controller.dart';
 
 class RepositoryListPage extends StatefulWidget {
   String? text;
