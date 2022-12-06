@@ -1,16 +1,13 @@
-# flutter_github_app
+<h1>Desafio Github App</h1>
+ > Status: em Desenvolvimento ⚠️
 
-A new Flutter project.
+### O objetivo desse desafio é criar um App onde se digita o nome do usuario Github em um campo de busca e trazer todas as informaçoes sobre o usuario digitado como nome,seguidores, repositorios do usuario e clicando sobre o nome do repositorio, direcionar para a pagina do github.
 
-## Getting Started
+### Mais sobre o App:
++ Componentização do Widget Container para reutilizar em outros arquivos
++ Utilizado padrao MVC na finalidade de organização do código.
 
-This project is a starting point for a Flutter application.
+### Dependencias:
 
-A few resources to get you started if this is your first Flutter project:
++ Url laucher para direcionamento,
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
