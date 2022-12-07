@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../components/search_movie.dart';
 import '../constants/string_constants.dart';
 import '../service/repository_service.dart';
 import '../controller/call_repository_controller.dart';
@@ -25,17 +25,22 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
 
   loadData() {
     controller = context.read<RepositoryController>();
-
     controller.getRepository(widget.text);
   }
 
   @override
   Widget build(BuildContext context) {
-   final provider =  Provider.of<RepositoryController>(context);
+    final provider = Provider.of<RepositoryController>(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(StringConstants.repository),
+        elevation: 0,
+        title: Text('Repositorios'),
+        actions: [
+          IconButton(onPressed: (){
+            SearchMovie;
+          }, icon: Icon(Icons.search))
+        ],
       ),
       body: provider.list.isEmpty
           ? const Center(child: CircularProgressIndicator())
