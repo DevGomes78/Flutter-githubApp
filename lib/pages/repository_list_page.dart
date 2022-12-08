@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../components/search_movie.dart';
+import '../components/search_repository.dart';
 import '../constants/string_constants.dart';
 import '../service/repository_service.dart';
 import '../controller/call_repository_controller.dart';
@@ -37,9 +37,11 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
         elevation: 0,
         title: Text('Repositorios'),
         actions: [
-          IconButton(onPressed: (){
-            SearchMovie;
-          }, icon: Icon(Icons.search))
+          IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: SearcRepository());
+              },
+              icon: Icon(Icons.search))
         ],
       ),
       body: provider.list.isEmpty
