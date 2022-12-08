@@ -3,6 +3,7 @@ class StringConstants{
   static const notifications = 'Notificaçoes';
   static const profile = 'Perfil';
   static const repository ='Repositorios';
+  static const searchRepository = 'Pesquisar Repositorios';
   static const organizations ='Organizaçoes';
   static const ratedAsStar='Classificado com Estrela';
   static const popular = 'Popular';
