@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../constants/string_constants.dart';
 import '../controller/call_repository_controller.dart';
 import '../models/repository_model.dart';
 import '../service/repository_service.dart';
 
-class SearcRepository extends SearchDelegate{
+class SearchRepository extends SearchDelegate{
 
   @override
   List<Widget>? buildActions(BuildContext context) {
