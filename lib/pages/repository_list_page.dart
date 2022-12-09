@@ -41,7 +41,7 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(widget.text.toString(),style: const TextStyle(fontSize: 14,color: Colors.grey),),
-                const Text('Repositorios'),
+                const Text(StringConstants.repository),
               ],
             )),
         backgroundColor: Colors.black12,
