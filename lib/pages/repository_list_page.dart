@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../components/search_repository.dart';
+import '../constants/string_constants.dart';
 import '../service/repository_service.dart';
 import '../controller/call_repository_controller.dart';
 
@@ -34,18 +35,48 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('Repositorios'),
+        title: Container(
+
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(widget.text.toString(),style: const TextStyle(fontSize: 14,color: Colors.grey),),
+                const Text('Repositorios'),
+              ],
+            )),
+        backgroundColor: Colors.black12,
         actions: [
           IconButton(
-              onPressed: () {
-                showSearch(context: context, delegate: SearcRepository());
-              },
-              icon: Icon(Icons.search))
+            onPressed: (){},
+            icon: const Icon(Icons.search,color: Colors.blue),
+          ),
         ],
       ),
       body: provider.list.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : _repositoryList(provider),
+    );
+  }
+
+  _appBarContainer(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.black12,
+      ),
+      child: TextField(
+        onTap: () {
+          showSearch(
+            context: context,
+            delegate: SearchRepository(),
+          );
+        },
+        decoration: const InputDecoration(
+          labelText: StringConstants.searchRepository,
+        ),
+      ),
     );
   }
 
