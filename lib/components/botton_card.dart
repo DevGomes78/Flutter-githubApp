@@ -21,14 +21,14 @@ class _BottonCardState extends State<BottonCard> {
   @override
   void initState() {
     controller = context.read<UserController>();
-    controller.getUser(context,widget.text);
+    controller.getUser(context, widget.text);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Map<String, dynamic>>(
-        future: controller.getUser(context,widget.text),
+        future: controller.getUser(context, widget.text),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -67,10 +67,17 @@ class _BottonCardState extends State<BottonCard> {
               children: [
                 Row(
                   children: [
-                    const Icon(
-                      Icons.receipt,
-                      size: 20,
-                      color: Colors.white,
+                    Container(
+                      height: 35,
+                      width: 35,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white12),
+                      child: const Icon(
+                        Icons.receipt,
+                        size: 20,
+                        color: Colors.white,
+                      ),
                     ),
                     const SizedBox(width: 20),
                     InkWell(
@@ -98,15 +105,22 @@ class _BottonCardState extends State<BottonCard> {
                 ),
                 const SizedBox(height: 20),
                 Row(
-                  children: const [
-                    Icon(Icons.dataset_outlined, color: Colors.orange),
-                    SizedBox(width: 20),
-                    Text(
+                  children: [
+                    Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.orange),
+                        child: const Icon(Icons.dataset_outlined,
+                            color: Colors.white)),
+                    const SizedBox(width: 20),
+                    const Text(
                       StringConstants.organizations,
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
-                    SizedBox(width: 135),
-                    Text(
+                    const SizedBox(width: 135),
+                    const Text(
                       '0',
                       style: TextStyle(fontSize: 18),
                     ),
@@ -114,8 +128,16 @@ class _BottonCardState extends State<BottonCard> {
                 ),
                 const SizedBox(height: 20),
                 Row(
-                  children: const [
-                    Icon(Icons.star, color: Colors.yellow),
+                  children:  [
+                    Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.yellowAccent
+
+                        ),
+                        child: Icon(Icons.star_border, color: Colors.white)),
                     SizedBox(width: 15),
                     Text(
                       StringConstants.ratedAsStar,
