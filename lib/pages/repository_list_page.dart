@@ -35,19 +35,19 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Container(
-
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(widget.text.toString(),style: const TextStyle(fontSize: 14,color: Colors.grey),),
-                const Text(StringConstants.repository),
-              ],
-            )),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(widget.text.toString(),style: const TextStyle(fontSize: 14,color: Colors.grey),),
+            const Text(StringConstants.repository),
+          ],
+        ),
         backgroundColor: Colors.black12,
         actions: [
           IconButton(
-            onPressed: (){},
+            onPressed: (){
+
+            },
             icon: const Icon(Icons.search,color: Colors.blue),
           ),
         ],
