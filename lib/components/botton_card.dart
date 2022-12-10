@@ -128,23 +128,21 @@ class _BottonCardState extends State<BottonCard> {
                 ),
                 const SizedBox(height: 20),
                 Row(
-                  children:  [
+                  children: [
                     Container(
                         height: 35,
                         width: 35,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.yellowAccent
-
-                        ),
-                        child: Icon(Icons.star_border, color: Colors.white)),
-                    SizedBox(width: 15),
-                    Text(
+                            color: Colors.yellowAccent),
+                        child: const Icon(Icons.star_border, color: Colors.white)),
+                    const SizedBox(width: 15),
+                    const Text(
                       StringConstants.ratedAsStar,
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
-                    SizedBox(width: 40),
-                    Text(
+                    const SizedBox(width: 40),
+                    const Text(
                       '17',
                       style: TextStyle(fontSize: 18),
                     ),
