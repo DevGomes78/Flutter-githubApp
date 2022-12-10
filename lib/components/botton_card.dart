@@ -113,7 +113,7 @@ class _BottonCardState extends State<BottonCard> {
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.orange),
                         child: const Icon(Icons.dataset_outlined,
-                            color: Colors.white)),
+                            size: 20, color: Colors.white)),
                     const SizedBox(width: 20),
                     const Text(
                       StringConstants.organizations,
@@ -135,7 +135,11 @@ class _BottonCardState extends State<BottonCard> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.yellowAccent),
-                        child: const Icon(Icons.star_border, color: Colors.white)),
+                        child: const Icon(
+                          Icons.star_border,
+                          color: Colors.white,
+                          size: 20,
+                        )),
                     const SizedBox(width: 15),
                     const Text(
                       StringConstants.ratedAsStar,
