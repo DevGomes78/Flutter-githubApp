@@ -71,7 +71,7 @@ class _BottonCardState extends State<BottonCard> {
                       height: 35,
                       width: 35,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                           color: Colors.white12),
                       child: const Icon(
                         Icons.receipt,
@@ -110,7 +110,7 @@ class _BottonCardState extends State<BottonCard> {
                         height: 35,
                         width: 35,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(5),
                             color: Colors.orange),
                         child: const Icon(Icons.dataset_outlined,
                             color: Colors.white)),
@@ -133,7 +133,7 @@ class _BottonCardState extends State<BottonCard> {
                         height: 35,
                         width: 35,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(5),
                             color: Colors.yellowAccent),
                         child: const Icon(Icons.star_border, color: Colors.white)),
                     const SizedBox(width: 15),
