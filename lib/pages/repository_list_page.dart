@@ -38,7 +38,8 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(widget.text.toString(),style: const TextStyle(fontSize: 14,color: Colors.grey),),
+            Text(widget.text.toString(),
+              style: const TextStyle(fontSize: 14,color: Colors.grey),),
             const Text(StringConstants.repository),
           ],
         ),
@@ -46,7 +47,7 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
         actions: [
           IconButton(
             onPressed: (){
-
+              _appBarContainer(context);
             },
             icon: const Icon(Icons.search,color: Colors.blue),
           ),
