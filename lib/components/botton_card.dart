@@ -58,18 +58,18 @@ class _BottonCardState extends State<BottonCard> {
       child: Card(
         elevation: 5,
         child: SizedBox(
-          height: 165,
+          height: 170,
           width: MediaQuery.of(context).size.width,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     Container(
-                      height: 35,
-                      width: 35,
+                      height: 30,
+                      width: 30,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: Colors.white12),
@@ -79,7 +79,7 @@ class _BottonCardState extends State<BottonCard> {
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 18),
                     InkWell(
                       onTap: () {
                         Navigator.push(
@@ -96,7 +96,7 @@ class _BottonCardState extends State<BottonCard> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 150),
+                    const SizedBox(width: 140),
                     Text(
                         controller.decodeJson[ServiceConstants.publicRepository]
                             .toString(),
@@ -107,8 +107,8 @@ class _BottonCardState extends State<BottonCard> {
                 Row(
                   children: [
                     Container(
-                        height: 35,
-                        width: 35,
+                        height: 30,
+                        width: 30,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: Colors.orange),
@@ -130,11 +130,11 @@ class _BottonCardState extends State<BottonCard> {
                 Row(
                   children: [
                     Container(
-                        height: 35,
-                        width: 35,
+                        height: 30,
+                        width: 30,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: Colors.yellowAccent),
+                            color: Colors.yellow),
                         child: const Icon(
                           Icons.star_border,
                           color: Colors.white,
@@ -145,7 +145,7 @@ class _BottonCardState extends State<BottonCard> {
                       StringConstants.ratedAsStar,
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
-                    const SizedBox(width: 40),
+                    const SizedBox(width: 35),
                     const Text(
                       '17',
                       style: TextStyle(fontSize: 18),
