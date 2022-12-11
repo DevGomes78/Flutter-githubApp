@@ -28,7 +28,7 @@ class _ListRepositoryState extends State<ListRepository> {
 
   @override
   Widget build(BuildContext context) {
-    final provider =  Provider.of<RepositoryController>(context);
+    final provider = Provider.of<RepositoryController>(context);
     if (provider.lista.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     } else {
@@ -85,7 +85,10 @@ class _ListRepositoryState extends State<ListRepository> {
                             ),
                           ),
                           const SizedBox(height: 5),
-                          Text(listRepository.description.toString()),
+                          Text(
+                            listRepository.description.toString(),
+                            style: const TextStyle(color: Colors.grey),
+                          ),
                           const SizedBox(height: 25),
                           Row(
                             children: [
