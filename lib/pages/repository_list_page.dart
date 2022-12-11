@@ -8,6 +8,7 @@ import '../controller/call_repository_controller.dart';
 class RepositoryListPage extends StatefulWidget {
   String? text;
 
+
   RepositoryListPage(this.text, {Key? key}) : super(key: key);
 
   @override
@@ -15,6 +16,7 @@ class RepositoryListPage extends StatefulWidget {
 }
 
 class _RepositoryListPageState extends State<RepositoryListPage> {
+  var listRepository;
   RepositoryController controller = RepositoryController();
 
   @override
@@ -30,8 +32,6 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<RepositoryController>(context);
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -47,37 +47,14 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
         actions: [
           IconButton(
             onPressed: (){
-              _appBarContainer(context);
             },
             icon: const Icon(Icons.search,color: Colors.blue),
           ),
         ],
       ),
-      body: provider.list.isEmpty
+      body: controller.list.isEmpty
           ? const Center(child: CircularProgressIndicator())
-          : _repositoryList(provider),
-    );
-  }
-
-  _appBarContainer(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 40,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.black12,
-      ),
-      child: TextField(
-        onTap: () {
-          showSearch(
-            context: context,
-            delegate: SearchRepository(),
-          );
-        },
-        decoration: const InputDecoration(
-          labelText: StringConstants.searchRepository,
-        ),
-      ),
+          : _repositoryList(controller),
     );
   }
 
@@ -87,7 +64,7 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
       child: ListView.builder(
           itemCount: provider.list.length,
           itemBuilder: (context, index) {
-            var listRepository = provider.list[index];
+            listRepository = provider.list[index];
             return InkWell(
               onTap: CallRepository(repositoyModels: listRepository).callGithub,
               child: Card(
